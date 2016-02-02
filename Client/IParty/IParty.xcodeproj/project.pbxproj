@@ -19,6 +19,8 @@
 		737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E1F1C61195C008DDB41 /* UploadImageCollectionViewCell.m */; };
 		737F7E221C61195D008DDB41 /* UploadImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F7E201C61195C008DDB41 /* UploadImageCollectionViewCell.xib */; };
 		737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E251C61448C008DDB41 /* HttpRequester.swift */; };
+		737F7E291C616C85008DDB41 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E281C616C85008DDB41 /* LoginViewController.m */; };
+		737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E2B1C616C95008DDB41 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,10 @@
 		737F7E201C61195C008DDB41 /* UploadImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		737F7E241C61448C008DDB41 /* IParty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IParty-Bridging-Header.h"; sourceTree = "<group>"; };
 		737F7E251C61448C008DDB41 /* HttpRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequester.swift; sourceTree = "<group>"; };
+		737F7E271C616C85008DDB41 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		737F7E281C616C85008DDB41 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		737F7E2A1C616C95008DDB41 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		737F7E2B1C616C95008DDB41 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,10 @@
 				737F7E021C60DB5C008DDB41 /* MainMenuViewController.m */,
 				737F7E1B1C60EA19008DDB41 /* SetupPartyViewController.h */,
 				737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */,
+				737F7E271C616C85008DDB41 /* LoginViewController.h */,
+				737F7E281C616C85008DDB41 /* LoginViewController.m */,
+				737F7E2A1C616C95008DDB41 /* RegisterViewController.h */,
+				737F7E2B1C616C95008DDB41 /* RegisterViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -201,9 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737F7E291C616C85008DDB41 /* LoginViewController.m in Sources */,
 				737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
 				737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */,
+				737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */,
 				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
 				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,

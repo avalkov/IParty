@@ -97,6 +97,11 @@ NSMutableArray *imagesForUploadData;
 
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [self.partyDescription scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+}
+
 - (IBAction)submitButtonTouched:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
