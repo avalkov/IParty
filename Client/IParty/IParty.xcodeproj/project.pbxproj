@@ -15,6 +15,7 @@
 		737F7E0B1C60DB5C008DDB41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 737F7E091C60DB5C008DDB41 /* LaunchScreen.storyboard */; };
 		737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E151C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m */; };
 		737F7E181C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F7E161C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib */; };
+		737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		737F7E141C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuItemCollectionViewCell.h; sourceTree = "<group>"; };
 		737F7E151C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuItemCollectionViewCell.m; sourceTree = "<group>"; };
 		737F7E161C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		737F7E1B1C60EA19008DDB41 /* SetupPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupPartyViewController.h; sourceTree = "<group>"; };
+		737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupPartyViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 			children = (
 				737F7E011C60DB5C008DDB41 /* MainMenuViewController.h */,
 				737F7E021C60DB5C008DDB41 /* MainMenuViewController.m */,
+				737F7E1B1C60EA19008DDB41 /* SetupPartyViewController.h */,
+				737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
 				737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
@@ -324,6 +330,7 @@
 				737F7E111C60DB5C008DDB41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

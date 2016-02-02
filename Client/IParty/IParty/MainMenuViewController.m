@@ -8,6 +8,7 @@
 
 #import "MainMenuViewController.h"
 #import "MainMenuItemCollectionViewCell.h"
+#import "SetupPartyViewController.h"
 
 @interface MainMenuViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -16,7 +17,7 @@
 
 @implementation MainMenuViewController
 
-NSArray *image_array, *label_array;
+NSArray *image_array, *label_array, *segues_array;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +25,7 @@ NSArray *image_array, *label_array;
     self.view.backgroundColor = [UIColor whiteColor];
     image_array = [NSArray arrayWithObjects: @"setupPartyImage.jpg", @"findPartyImage", @"sendInviteImage", @"reviewMemoriesImage", nil ];
     label_array = [NSArray arrayWithObjects: @"Setup Party", @"Find Party", @"Send Invite", @"Memories", nil];
+    segues_array = [NSArray arrayWithObjects: @"setupPartyIdentifer", @"findPartyIdentifer", @"sendInviteIdentifer", @"reviewMemoriesIdentifer", nil];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -41,6 +43,14 @@ NSArray *image_array, *label_array;
     [self.collectionView registerNib:[UINib nibWithNibName:@"MainMenuItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCellIdentifer"];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    /*
+    if ([segue.identifier isEqualToString:@"setupPartyIdentifer"] && [segue.destinationViewController isKindOfClass:[SetupPartyViewController class]]) {
+        
+        SetupPartyViewController *spvc = (SetupPartyViewController *)segue.destinationViewController;
+    }
+    */
+}
 
 -(void) setBorder:(UIView *) theView withBGColor:(UIColor *) color withCornerRadius :(float) radius andBorderWidth :(float) borderWidth andBorderColor :(UIColor *) bgColor WithAlpha:(float) curAlpha
 {
@@ -89,6 +99,8 @@ NSArray *image_array, *label_array;
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Clicked row: %ld col: %ld", (long)indexPath.row, (long)indexPath.section);
+    
+    [self performSegueWithIdentifier:[segues_array objectAtIndex:(2 * indexPath.section) + indexPath.row] sender:self];
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     

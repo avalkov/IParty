@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10089" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pTM-HZ-CXe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
     </dependencies>
     <scenes>
-        <!--Main Menu View Controller-->
+        <!--IParty-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainMenuViewController" sceneMemberID="viewController">
@@ -30,11 +30,110 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="IParty" id="4Eb-Gq-vAH"/>
                     <connections>
                         <outlet property="collectionView" destination="756-7o-JjQ" id="P57-Ok-MHN"/>
+                        <segue destination="Y4l-Bu-3Hl" kind="show" identifier="setupPartyIdentifer" id="16X-DS-3Q4"/>
+                        <segue destination="3i2-zU-sT1" kind="show" identifier="findPartyIdentifer" id="pFd-5k-FgP"/>
+                        <segue destination="Pj5-bF-Wbf" kind="show" identifier="reviewMemoriesIdentifer" id="lHC-nC-51Y"/>
+                        <segue destination="kO9-08-U8I" kind="show" identifier="sendInviteIdentifer" id="Kiw-TS-1ak"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1263" y="479"/>
+        </scene>
+        <!--Setup Party-->
+        <scene sceneID="DgB-On-w9C">
+            <objects>
+                <viewController id="Y4l-Bu-3Hl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PfU-uw-KHX"/>
+                        <viewControllerLayoutGuide type="bottom" id="jcI-BB-yYt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ezh-oE-bal">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Setup Party" id="HwP-yW-eMW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I1w-YJ-H2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008" y="-601"/>
+        </scene>
+        <!--Send Invite-->
+        <scene sceneID="FTO-64-0wo">
+            <objects>
+                <viewController id="kO9-08-U8I" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fds-Nm-Km7"/>
+                        <viewControllerLayoutGuide type="bottom" id="CTp-yS-U4w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HSc-SW-Uxf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Send Invite" id="hPe-4H-eg3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e6l-qQ-OUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008" y="108"/>
+        </scene>
+        <!--Find Party-->
+        <scene sceneID="dfA-Uf-ZLX">
+            <objects>
+                <viewController id="3i2-zU-sT1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qeu-J4-06m"/>
+                        <viewControllerLayoutGuide type="bottom" id="g29-73-CiD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="36g-Xh-TrO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Find Party" id="6Bq-a8-aIc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNC-rs-LE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008" y="820"/>
+        </scene>
+        <!--Review Memories-->
+        <scene sceneID="qmr-R1-nU4">
+            <objects>
+                <viewController id="Pj5-bF-Wbf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="blH-3h-Qz8"/>
+                        <viewControllerLayoutGuide type="bottom" id="HEd-rF-eQS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QhJ-mj-Rfo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Review Memories" id="mou-n2-E9E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VEd-oZ-a7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2008" y="1542"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="9cO-Ne-Qnb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pTM-HZ-CXe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wHq-rr-Dtw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Vpv-oc-esZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2zj-eB-lYV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="521" y="479"/>
         </scene>
