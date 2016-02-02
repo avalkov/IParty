@@ -16,6 +16,9 @@
 		737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E151C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m */; };
 		737F7E181C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F7E161C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib */; };
 		737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */; };
+		737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E1F1C61195C008DDB41 /* UploadImageCollectionViewCell.m */; };
+		737F7E221C61195D008DDB41 /* UploadImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 737F7E201C61195C008DDB41 /* UploadImageCollectionViewCell.xib */; };
+		737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E251C61448C008DDB41 /* HttpRequester.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,11 @@
 		737F7E161C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		737F7E1B1C60EA19008DDB41 /* SetupPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupPartyViewController.h; sourceTree = "<group>"; };
 		737F7E1C1C60EA19008DDB41 /* SetupPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupPartyViewController.m; sourceTree = "<group>"; };
+		737F7E1E1C61195C008DDB41 /* UploadImageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadImageCollectionViewCell.h; sourceTree = "<group>"; };
+		737F7E1F1C61195C008DDB41 /* UploadImageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadImageCollectionViewCell.m; sourceTree = "<group>"; };
+		737F7E201C61195C008DDB41 /* UploadImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		737F7E241C61448C008DDB41 /* IParty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IParty-Bridging-Header.h"; sourceTree = "<group>"; };
+		737F7E251C61448C008DDB41 /* HttpRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequester.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 		737F7DFA1C60DB5C008DDB41 /* IParty */ = {
 			isa = PBXGroup;
 			children = (
+				737F7E231C614474008DDB41 /* HTTP */,
 				737F7E131C60DBB6008DDB41 /* Views */,
 				737F7E121C60DB70008DDB41 /* ViewControllers */,
 				737F7DFE1C60DB5C008DDB41 /* AppDelegate.h */,
@@ -104,8 +113,20 @@
 				737F7E141C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.h */,
 				737F7E151C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m */,
 				737F7E161C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib */,
+				737F7E1E1C61195C008DDB41 /* UploadImageCollectionViewCell.h */,
+				737F7E1F1C61195C008DDB41 /* UploadImageCollectionViewCell.m */,
+				737F7E201C61195C008DDB41 /* UploadImageCollectionViewCell.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		737F7E231C614474008DDB41 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				737F7E251C61448C008DDB41 /* HttpRequester.swift */,
+				737F7E241C61448C008DDB41 /* IParty-Bridging-Header.h */,
+			);
+			name = HTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737F7E0B1C60DB5C008DDB41 /* LaunchScreen.storyboard in Resources */,
+				737F7E221C61195D008DDB41 /* UploadImageCollectionViewCell.xib in Resources */,
 				737F7E081C60DB5C008DDB41 /* Assets.xcassets in Resources */,
 				737F7E061C60DB5C008DDB41 /* Main.storyboard in Resources */,
 				737F7E181C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib in Resources */,
@@ -182,6 +204,8 @@
 				737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
 				737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */,
+				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
+				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
 				737F7DFD1C60DB5C008DDB41 /* main.m in Sources */,
 			);
@@ -293,10 +317,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = IParty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swifty.IParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IParty/IParty-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -304,10 +331,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = IParty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = swifty.IParty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IParty/IParty-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--IParty-->
@@ -46,7 +47,7 @@
         <!--Setup Party-->
         <scene sceneID="DgB-On-w9C">
             <objects>
-                <viewController id="Y4l-Bu-3Hl" sceneMemberID="viewController">
+                <viewController id="Y4l-Bu-3Hl" customClass="SetupPartyViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PfU-uw-KHX"/>
                         <viewControllerLayoutGuide type="bottom" id="jcI-BB-yYt"/>
@@ -54,9 +55,69 @@
                     <view key="view" contentMode="scaleToFill" id="ezh-oE-bal">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QnI-TD-oyf">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LtW-P9-Ljr">
+                                <rect key="frame" x="152" y="490" width="296" height="30"/>
+                                <color key="backgroundColor" red="0.41740622505919678" green="0.71695927682980054" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="296" id="U5B-zd-zvY"/>
+                                </constraints>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonTouched:" destination="Y4l-Bu-3Hl" eventType="touchUpInside" id="seA-Ix-34q"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dEe-Kt-lWv">
+                                <rect key="frame" x="20" y="339" width="560" height="100"/>
+                                <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="ajL-Q3-4MW"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YwI-7e-gh0">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Crazy party going on" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QHC-AG-10p">
+                                <rect key="frame" x="20" y="123" width="560" height="191"/>
+                                <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dEe-Kt-lWv" firstAttribute="top" secondItem="QHC-AG-10p" secondAttribute="bottom" constant="25" id="2U3-p6-crL"/>
+                            <constraint firstItem="QHC-AG-10p" firstAttribute="trailing" secondItem="dEe-Kt-lWv" secondAttribute="trailing" id="HAS-Bk-7EV"/>
+                            <constraint firstItem="dEe-Kt-lWv" firstAttribute="centerX" secondItem="LtW-P9-Ljr" secondAttribute="centerX" id="Iem-IH-P0a"/>
+                            <constraint firstItem="QHC-AG-10p" firstAttribute="leading" secondItem="dEe-Kt-lWv" secondAttribute="leading" id="Jev-ut-LxJ"/>
+                            <constraint firstItem="jcI-BB-yYt" firstAttribute="top" secondItem="LtW-P9-Ljr" secondAttribute="bottom" constant="80" id="KKB-Vn-BJ4"/>
+                            <constraint firstItem="LtW-P9-Ljr" firstAttribute="top" secondItem="dEe-Kt-lWv" secondAttribute="bottom" constant="51" id="RM5-UY-orI"/>
+                            <constraint firstItem="QnI-TD-oyf" firstAttribute="top" secondItem="PfU-uw-KHX" secondAttribute="bottom" constant="8" symbolic="YES" id="Z7v-sR-Yt3"/>
+                            <constraint firstItem="QHC-AG-10p" firstAttribute="top" secondItem="QnI-TD-oyf" secondAttribute="bottom" constant="21" id="cWf-k9-bf2"/>
+                            <constraint firstItem="QnI-TD-oyf" firstAttribute="leading" secondItem="QHC-AG-10p" secondAttribute="leading" id="jeb-pI-snE"/>
+                            <constraint firstItem="QnI-TD-oyf" firstAttribute="trailing" secondItem="QHC-AG-10p" secondAttribute="trailing" id="llh-Gg-27j"/>
+                            <constraint firstItem="QnI-TD-oyf" firstAttribute="trailing" secondItem="ezh-oE-bal" secondAttribute="trailingMargin" id="scN-8p-Zi3"/>
+                            <constraint firstItem="QnI-TD-oyf" firstAttribute="leading" secondItem="ezh-oE-bal" secondAttribute="leadingMargin" id="waY-WM-Em4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setup Party" id="HwP-yW-eMW"/>
+                    <connections>
+                        <outlet property="imagesForUploadCollectionView" destination="dEe-Kt-lWv" id="ytS-dv-fiR"/>
+                        <outlet property="partyDescription" destination="QHC-AG-10p" id="26A-mZ-roa"/>
+                        <outlet property="partyTitle" destination="QnI-TD-oyf" id="j7t-XZ-LNx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1w-YJ-H2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

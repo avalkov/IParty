@@ -52,15 +52,6 @@ NSArray *image_array, *label_array, *segues_array;
     */
 }
 
--(void) setBorder:(UIView *) theView withBGColor:(UIColor *) color withCornerRadius :(float) radius andBorderWidth :(float) borderWidth andBorderColor :(UIColor *) bgColor WithAlpha:(float) curAlpha
-{
-    theView.layer.borderWidth = borderWidth;
-    theView.layer.cornerRadius = radius;
-    theView.layer.borderColor = [color CGColor];
-    UIColor *c = [color colorWithAlphaComponent:curAlpha];
-    theView.layer.backgroundColor = [c CGColor];
-}
-
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     return 2;
 }
@@ -79,7 +70,7 @@ NSArray *image_array, *label_array, *segues_array;
         originalCell = [[[NSBundle mainBundle] loadNibNamed:@"MainMenuItemCollectionViewCell" owner:nil options:nil] objectAtIndex:0];
     }
     
-    MainMenuItemCollectionViewCell *cell =(MainMenuItemCollectionViewCell*) originalCell;
+    MainMenuItemCollectionViewCell *cell = (MainMenuItemCollectionViewCell*) originalCell;
     
     cell.label.text = [label_array objectAtIndex:(2 * indexPath.section) + indexPath.row];
     cell.image.image = [UIImage imageNamed: [image_array objectAtIndex:(2 * indexPath.section) + indexPath.row]];
@@ -92,7 +83,6 @@ NSArray *image_array, *label_array, *segues_array;
     [layer setShadowPath:[[UIBezierPath bezierPathWithRect:cell.bounds] CGPath]];
     [layer setCornerRadius:20.0];
     
-    
     return cell;
 }
 
@@ -101,9 +91,6 @@ NSArray *image_array, *label_array, *segues_array;
     NSLog(@"Clicked row: %ld col: %ld", (long)indexPath.row, (long)indexPath.section);
     
     [self performSegueWithIdentifier:[segues_array objectAtIndex:(2 * indexPath.section) + indexPath.row] sender:self];
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
 }
 
 - (void)viewWillLayoutSubviews
