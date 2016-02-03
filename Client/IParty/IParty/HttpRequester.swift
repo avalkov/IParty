@@ -10,11 +10,7 @@ import Foundation
 
 @objc class HttpRequester: NSObject {
     
-    func test() {
-//        httpGet(NSMutableURLRequest(URL: NSURL(string: "http://192.168.168.1:59651/")!))
-    }
-    
-    func post(atUrl url: String, withFormDataData data: String, completion: (NSString) -> (), andExpectedStatusCodes validStatusCodes: [Int]) {
+    func post(atUrl url: String, withFormDataData data: String, completion: (NSString?, NSNumber?) -> ()) {
         
         let request = createRequest(withUrl: url);
         
@@ -24,25 +20,21 @@ import Foundation
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
             guard error == nil && data != nil else {                                                          // check for fundamental networking error
-                print("error=\(error)")
+                completion(nil, nil);
                 return
             }
             
-            if let httpStatus = response as? NSHTTPURLResponse where !validStatusCodes.contains(httpStatus.statusCode) {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
+            let httpStatus = response as? NSHTTPURLResponse;
             let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print("responseString = \(responseString)")
             
-            completion(responseString!);
+            completion(responseString!, httpStatus!.statusCode);
         }
         task.resume()
     }
     
     func createRequest(withUrl url: String) -> NSMutableURLRequest {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!);
+        request.setValue("localhost", forHTTPHeaderField: "Host");
         return request;
     }
 }

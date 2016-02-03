@@ -6,6 +6,7 @@
 //  Copyright © 2016 Swifty. All rights reserved.
 //
 
+#import "AppConstants.h"
 #import "RegisterViewController.h"
 #import "MessageBox.h"
 
@@ -35,8 +36,36 @@
     NSString *password = self.passwordInput.text;
     NSString *repeatPassword = self.repeatPasswordInput.text;
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSString *data = [NSString stringWithFormat:@"Email=%@&Password=%@&ConfirmPassword=%@", username, password, repeatPassword];
+    NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, REGISTRATION_URI];
+    
+    id registrationCompleteionBlock = ^(NSString *response, NSNumber *statusCode) {
+        
+        if(response == nil && statusCode == nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MessageBox alloc] showAlertWithTitle:@"No Internet" viewController:self andMessage:@"Please check your internet connection and try again"];
+            });
+            
+        } if([statusCode intValue] == HTTP_STATUS_OK) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MessageBox alloc] showAlertWithTitle:@"Success" viewController:self andMessage:@"Successfully registered"];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
+            
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MessageBox alloc] showAlertWithTitle:@"Error" viewController:self andMessage:@"Username already taken"];
+            });
+        }
+    };
+    
+    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+    [httpRequester postAtUrl:url withFormDataData:data completion:registrationCompleteionBlock];
 }
+
 
 -(BOOL)validateInputFields {
     
@@ -52,6 +81,11 @@
     
     if(self.repeatPasswordInput.text.length == 0) {
         [[MessageBox alloc] showAlertWithTitle:@"Empty repeat password" viewController:self andMessage:@"Please fill repeat password"];
+        return NO;
+    }
+    
+    if([self.passwordInput.text isEqualToString:self.repeatPasswordInput.text] == NO) {
+        [[MessageBox alloc] showAlertWithTitle:@"Error" viewController:self andMessage:@"Passwords doesnt match"];
         return NO;
     }
     
