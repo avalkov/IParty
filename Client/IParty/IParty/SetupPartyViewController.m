@@ -8,7 +8,6 @@
 
 #import "SetupPartyViewController.h"
 #import "UploadImageCollectionViewCell.h"
-#import "IParty-Swift.h"
 
 @interface SetupPartyViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -25,9 +24,7 @@ NSMutableArray *imagesForUploadData;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-
-    HttpRequester *httpRequester = [[HttpRequester alloc] init];
-    [httpRequester test];
+    
     self.imagesForUploadCollectionView.delegate = self;
     self.imagesForUploadCollectionView.dataSource = self;
     
