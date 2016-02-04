@@ -19,7 +19,7 @@ import Foundation
         request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
-            guard error == nil && data != nil else {                                                          // check for fundamental networking error
+            guard error == nil && data != nil else { // check for networking error
                 completion(nil, nil);
                 return
             }

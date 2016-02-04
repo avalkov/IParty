@@ -6,13 +6,18 @@
 //  Copyright © 2016 Swifty. All rights reserved.
 //
 
+#import "AppConstants.h"
 #import "SetupPartyViewController.h"
 #import "UploadImageCollectionViewCell.h"
 
+#import "IParty-Swift.h"
+
 @interface SetupPartyViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *partyTitle;
-@property (weak, nonatomic) IBOutlet UITextView *partyDescription;
+@property (weak, nonatomic) IBOutlet UITextField *titleInput;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionInput;
+@property (weak, nonatomic) IBOutlet UITextField *locationInput;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dateInput;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagesForUploadCollectionView;
 
 @end
@@ -73,8 +78,6 @@ NSMutableArray *imagesForUploadData;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Clicked row: %ld col: %ld", (long)indexPath.row, (long)indexPath.section);
-    
     if(indexPath.row == 0 && indexPath.section == 0) {
         UIImagePickerController *pickerView = [[UIImagePickerController alloc] init];
         pickerView.allowsEditing = YES;
@@ -96,11 +99,40 @@ NSMutableArray *imagesForUploadData;
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self.partyDescription scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    [self.descriptionInput scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO]; // Fixes problem: I can't type description after rotation
+}
+- (IBAction)datePickerAction:(id)sender {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    
+    NSString *formatedDate = [dateFormatter stringFromDate:self.dateInput.date];
+    
+    NSLog(@"%@", formatedDate);
 }
 
-- (IBAction)submitButtonTouched:(id)sender {
+- (IBAction)submitAction:(id)sender {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (BOOL)validateFields {
+    
+    if(self.titleInput.text.length == 0) {
+        
+        return NO;
+    }
+    
+    if(self.descriptionInput.text.length == 0) {
+        
+        return NO;
+    }
+    
+    if(self.locationInput.text.length == 0) {
+        
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
