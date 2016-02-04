@@ -57,6 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageData.cs" />
+    <Compile Include="InviteRequest.cs" />
+    <Compile Include="InviteResponse.cs" />
+    <Compile Include="Party.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
