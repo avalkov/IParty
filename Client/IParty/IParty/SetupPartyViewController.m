@@ -47,6 +47,13 @@ NSMutableArray *imagesForUploadData;
     [self.imagesForUploadCollectionView registerNib:[UINib nibWithNibName:@"UploadImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCellIdentifer"];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.hidesBackButton = NO;
+}
+
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
     return [imagesForUploadData count] + 1;
 }

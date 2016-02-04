@@ -11,15 +11,17 @@
 #import "SetupPartyViewController.h"
 
 @interface MainMenuViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
 @implementation MainMenuViewController
 
-NSArray *image_array, *label_array, *segues_array;
+static NSArray *image_array, *label_array, *segues_array;
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -41,6 +43,13 @@ NSArray *image_array, *label_array, *segues_array;
     self.collectionView.backgroundColor = [UIColor clearColor];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"MainMenuItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCellIdentifer"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    self.navigationItem.hidesBackButton = YES;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MainMenuViewController.h"
+
 #import "AppDelegate.h"
 #import "AppConstants.h"
 #import "DBManager.h"
@@ -18,10 +20,14 @@
 
 @interface LoginViewController() <UIAlertViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 @property (weak, nonatomic) IBOutlet UITextField *usernameInput;
 @property (weak, nonatomic) IBOutlet UITextField *passwordInput;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+
 
 @property (weak, nonatomic) DBManager *dbManager;
+@property (strong, nonatomic) NSString *token;
 
 @end
 
@@ -34,6 +40,39 @@
     
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     self.dbManager = delegate.globalDBManager;
+    
+    self.logoImage.hidden = YES;
+    self.usernameInput.hidden = YES;
+    self.passwordInput.hidden = YES;
+    self.loginButton.hidden = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+
+    self.token = [self loadTokenFromDb];
+    
+    if(self.token != nil) {
+        
+        [self performSegueWithIdentifier:@"mainIdentifer" sender:self];
+        
+    } else {
+        
+        self.logoImage.hidden = NO;
+        self.usernameInput.hidden = NO;
+        self.passwordInput.hidden = NO;
+        self.loginButton.hidden = NO;
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"mainIdentifer"] && [segue.destinationViewController isKindOfClass:[MainMenuViewController class]]) {
+        
+        MainMenuViewController *mmvc = (MainMenuViewController *)segue.destinationViewController;
+        mmvc.token = self.token;
+    }
 }
 
 - (IBAction)loginAction:(id)sender {
@@ -65,8 +104,20 @@
                 NSLog(@"%@", json[@"access_token"]);
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
                     __weak typeof(self) weakSelf = self;
-                    [[MessageBox alloc] showConfirmationBoxWithTitle:@"Stay signed" viewController:weakSelf andMessage:@"Would you like to stay signed in ?"];
+                    
+                    id completion = ^(UIAlertAction *action) {
+                        
+                        if([[action title] isEqualToString:@"YES"] == YES) {
+                            
+                            [self saveTokenToDb:json[@"access_token"] andUsername: username];
+                        }
+                        
+                        [self performSegueWithIdentifier:@"mainIdentifer" sender:self];
+                    };
+                    
+                    [[MessageBox alloc] showConfirmationBoxWithTitle:@"Stay signed" viewController:weakSelf completion:completion andMessage:@"Would you like to stay signed in ?"];
                 });
                 
             } else {
@@ -86,7 +137,7 @@
     [self performSegueWithIdentifier:@"registerIdentifer" sender:self];
 }
 
--(BOOL)validateFields {
+- (BOOL)validateFields {
     
     if(self.usernameInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
@@ -101,6 +152,27 @@
     }
     
     return YES;
+}
+
+- (void)saveTokenToDb:(NSString *) token andUsername:(NSString *) username {
+    
+    NSString *deleteOldTokens = [NSString stringWithFormat:@"delete from tokens"];
+    [self.dbManager executeQuery:deleteOldTokens];
+    
+    NSString *query = [NSString stringWithFormat:@"insert into tokens values(null, '%@', '%@')", username, token];
+    [self.dbManager executeQuery:query];
+}
+
+- (NSString *)loadTokenFromDb {
+    
+    NSString *query = [NSString stringWithFormat:@"select token from tokens"];
+    NSArray *tokensResult = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
+    
+    if([tokensResult count] > 0) {
+        return [tokensResult objectAtIndex:0];
+    }
+    
+    return nil;
 }
 
 @end
