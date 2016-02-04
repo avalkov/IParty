@@ -8,22 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+#import "AppDelegate.h"
 #import "AppConstants.h"
+#import "DBManager.h"
 #import "LoginViewController.h"
 #import "MessageBox.h"
 
 #import "IParty-Swift.h"
 
-@interface LoginViewController()
+@interface LoginViewController() <UIAlertViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *usernameInput;
 @property (weak, nonatomic) IBOutlet UITextField *passwordInput;
+
+@property (weak, nonatomic) DBManager *dbManager;
 
 @end
 
 @implementation LoginViewController
 
+
 -(void)viewDidLoad {
+    
     [super viewDidLoad];
+    
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.dbManager = delegate.globalDBManager;
 }
 
 - (IBAction)loginAction:(id)sender {
@@ -43,7 +53,8 @@
             if(response == nil && statusCode == nil) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[MessageBox alloc] showAlertWithTitle:@"No Internet" viewController:self andMessage:@"Please check your internet connection and try again"];
+                    __weak typeof(self) weakSelf = self;
+                    [[MessageBox alloc] showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
                 });
                 
             } if([statusCode intValue] == HTTP_STATUS_OK) {
@@ -54,13 +65,15 @@
                 NSLog(@"%@", json[@"access_token"]);
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-
+                    __weak typeof(self) weakSelf = self;
+                    [[MessageBox alloc] showConfirmationBoxWithTitle:@"Stay signed" viewController:weakSelf andMessage:@"Would you like to stay signed in ?"];
                 });
                 
             } else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [[MessageBox alloc] showAlertWithTitle:@"Error" viewController:self andMessage:@"Wrong username or password"];
+                    __weak typeof(self) weakSelf = self;
+                    [[MessageBox alloc] showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"Wrong username or password"];
                 });
             }
         };
@@ -76,12 +89,14 @@
 -(BOOL)validateFields {
     
     if(self.usernameInput.text.length == 0) {
-        [[MessageBox alloc] showAlertWithTitle:@"Empty username" viewController:self andMessage:@"Please fill username"];
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Empty username" viewController:weakSelf andMessage:@"Please fill username"];
         return NO;
     }
     
     if(self.passwordInput.text.length == 0) {
-        [[MessageBox alloc] showAlertWithTitle:@"Empty password" viewController:self andMessage:@"Please fill password"];
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Empty password" viewController:weakSelf andMessage:@"Please fill password"];
         return NO;
     }
     

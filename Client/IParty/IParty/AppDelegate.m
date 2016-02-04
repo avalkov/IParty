@@ -16,7 +16,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.globalDBManager = [[DBManager alloc] initWithDatabaseFilename:@"sampledb.sql"];
+    
     return YES;
 }
 
