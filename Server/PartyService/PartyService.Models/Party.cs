@@ -7,13 +7,13 @@
     public class Party
     {
         private ICollection<User> members;
-        private ICollection<ImageData> images;
+        private ICollection<ImageData> imagesData;
         private ICollection<InviteRequest> invitesRequests;
 
         public Party()
         {
             this.members = new HashSet<User>();
-            this.images = new HashSet<ImageData>();
+            this.imagesData = new HashSet<ImageData>();
             this.invitesRequests = new HashSet<InviteRequest>();
         }
 
@@ -21,6 +21,8 @@
         public int Id { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public ImageData FrontImageData { get; set; }
 
         [Required]
         [MinLength(5), MaxLength(50)]
@@ -46,10 +48,10 @@
             set { this.members = value; }
         }
         
-        public virtual ICollection<ImageData> Images
+        public virtual ICollection<ImageData> ImagesData
         {
-            get { return this.images; }
-            set { this.images = value; }
+            get { return this.imagesData; }
+            set { this.imagesData = value; }
         }
 
         public virtual ICollection<InviteRequest> InvitesRequests

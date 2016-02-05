@@ -2,6 +2,8 @@
 {
     using System;
     using System.Linq;
+    using Microsoft.AspNet.Identity;
+
     using Contracts;
     using Models;
     using PartyService.Data.Repositories;
@@ -15,6 +17,33 @@
         {
             this.parties = parties;
             this.users = users;
+        }
+
+        public bool AddImageToParty(int id, string userId, string imageUrl)
+        {
+            var party = this.parties.All()
+                .Where(a => a.Id == id && a.UserId == userId)
+                .FirstOrDefault();
+
+            if (party == null)
+            {
+                return false;
+            }
+
+            var imageData = new ImageData()
+            {
+                Url = imageUrl
+            };
+
+            if (party.FrontImageData == null)
+            {
+                party.FrontImageData = imageData;
+            }
+
+            party.ImagesData.Add(imageData);
+            this.parties.SaveChanges();
+
+            return true;
         }
 
         public Party CreateParty(string userId, string title, string description, DateTime startTime, DateTime creationTime)
@@ -33,6 +62,9 @@
 
             this.parties.Add(party);
             this.parties.SaveChanges();
+
+            user.Parties.Add(party);
+            this.users.SaveChanges();
 
             return party;
         }

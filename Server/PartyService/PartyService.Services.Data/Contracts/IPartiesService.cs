@@ -10,5 +10,7 @@
         Party CreateParty(string userId, string title, string description, DateTime startTime, DateTime creationTime);
 
         IQueryable<Party> GetPartyDetails(int partyId);
+
+        bool AddImageToParty(int id, string userId, string imageUrl);
     }
 }
