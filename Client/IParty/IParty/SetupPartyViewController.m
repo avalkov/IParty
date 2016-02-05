@@ -11,6 +11,11 @@
 #import "AppConstants.h"
 #import "SetupPartyViewController.h"
 #import "UploadImageCollectionViewCell.h"
+#import "MessageBox.h"
+#import "CreatePartyRequestModel.h"
+#import "ReverseGeoLocation.h"
+
+#import "JSONModel.h"
 
 #import "IParty-Swift.h"
 
@@ -21,6 +26,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *locationInput;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateInput;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagesForUploadCollectionView;
+
+@property (strong, nonatomic) NSString *startTime;
+@property (strong, nonatomic) NSString *locationAddress;
+@property (strong, nonatomic) NSNumber *longitude;
+@property (strong, nonatomic) NSNumber *latitude;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
@@ -130,13 +140,10 @@ NSMutableArray *imagesForUploadData;
     [self.descriptionInput scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO]; // Fixes problem: I can't type description after rotation
 }
 - (IBAction)datePickerAction:(id)sender {
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
-    
-    NSString *formatedDate = [dateFormatter stringFromDate:self.dateInput.date];
-    
-    NSLog(@"%@", formatedDate);
+    self.startTime = [dateFormatter stringFromDate:self.dateInput.date];
 }
 
 - (void)detectLocation {
@@ -149,28 +156,51 @@ NSMutableArray *imagesForUploadData;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"%@", [locations lastObject]);
+    
     [manager stopUpdatingLocation];
+    
+    CLLocation * location = [locations lastObject];
+    
+    self.latitude = [NSNumber numberWithFloat:location.coordinate.latitude];
+    self.longitude = [NSNumber numberWithFloat:location.coordinate.longitude];
+    self.locationAddress = [[ReverseGeoLocation alloc] getGoogleAddressFromLatLong:self.latitude.floatValue lon:self.longitude.floatValue];
+    
+    self.locationInput.text = self.locationAddress;
 }
 
 - (IBAction)submitAction:(id)sender {
+    
+    if([self validateFields] == NO) {
+        return;
+    }
+    
+    
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL)validateFields {
     
     if(self.titleInput.text.length == 0) {
-        
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Empty title" viewController:weakSelf andMessage:@"Please enter title"];
         return NO;
     }
     
     if(self.descriptionInput.text.length == 0) {
-        
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Empty description" viewController:weakSelf andMessage:@"Please enter description"];
         return NO;
     }
     
     if(self.locationInput.text.length == 0) {
-        
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Empty location" viewController:weakSelf andMessage:@"Please enter location"];
+        return NO;
+    }
+    
+    if(self.startTime.length == 0) {
+        __weak typeof(self) weakSelf = self;
+        [[MessageBox alloc] showAlertWithTitle:@"Unknown start time" viewController:weakSelf andMessage:@"Please select start time"];
         return NO;
     }
     
