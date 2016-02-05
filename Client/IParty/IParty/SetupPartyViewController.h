@@ -10,4 +10,6 @@
 
 @interface SetupPartyViewController : UIViewController
 
+@property(strong, nonatomic) NSString *token;
+
 @end

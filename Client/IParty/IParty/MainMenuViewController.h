@@ -10,7 +10,7 @@
 
 @interface MainMenuViewController : UIViewController
 
-@property(weak, nonatomic) NSString *token;
+@property(strong, nonatomic) NSString *token;
 
 @end
 

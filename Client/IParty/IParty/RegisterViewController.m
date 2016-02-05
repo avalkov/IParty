@@ -66,7 +66,7 @@
     };
     
     HttpRequester *httpRequester = [[HttpRequester alloc] init];
-    [httpRequester postAtUrl:url withFormDataData:data completion:registrationCompleteionBlock];
+    [httpRequester postAtUrl:url withFormDataData:data andCustomHeaders:nil completion:registrationCompleteionBlock];
 }
 
 

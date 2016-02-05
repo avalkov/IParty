@@ -12,8 +12,10 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const SERVER_URL;
+
 extern NSString *const REGISTRATION_URI;
 extern NSString *const LOGIN_URI;
+extern NSString *const CREATE_PARTY_URI;
 
 extern int const HTTP_STATUS_OK;
 

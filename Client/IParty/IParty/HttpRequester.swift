@@ -10,9 +10,15 @@ import Foundation
 
 @objc class HttpRequester: NSObject {
     
-    func post(atUrl url: String, withFormDataData data: String, completion: (NSString?, NSNumber?) -> ()) {
+    func post(atUrl url: String, withFormDataData data: String, andCustomHeaders customHeaders: [String: String]?, completion: (NSString?, NSNumber?) -> ()) {
         
         let request = createRequest(withUrl: url);
+
+        if(customHeaders != nil) {
+            for (headerName, headerValue) in customHeaders! {
+                request.setValue(headerValue, forHTTPHeaderField: headerName);
+            }
+        }
         
         request.HTTPMethod = "POST";
         let postString = data;
@@ -33,6 +39,7 @@ import Foundation
     }
     
     func createRequest(withUrl url: String) -> NSMutableURLRequest {
+        
         let request = NSMutableURLRequest(URL: NSURL(string: url)!);
         request.setValue("localhost", forHTTPHeaderField: "Host");
         return request;

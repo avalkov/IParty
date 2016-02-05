@@ -101,8 +101,6 @@
                 NSData *responseData = [response dataUsingEncoding:NSUTF8StringEncoding];
                 NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
                 
-                NSLog(@"%@", json[@"access_token"]);
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     __weak typeof(self) weakSelf = self;
@@ -113,6 +111,8 @@
                             
                             [self saveTokenToDb:json[@"access_token"] andUsername: username];
                         }
+                        
+                        self.token = json[@"access_token"];
                         
                         [self performSegueWithIdentifier:@"mainIdentifer" sender:self];
                     };
@@ -129,7 +129,7 @@
             }
         };
         
-        [httpRequester postAtUrl:url withFormDataData:data completion:loginCompletionBlock];
+        [httpRequester postAtUrl:url withFormDataData:data andCustomHeaders:nil completion:loginCompletionBlock];
     }
 }
 
@@ -169,7 +169,7 @@
     NSArray *tokensResult = [[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
     
     if([tokensResult count] > 0) {
-        return [tokensResult objectAtIndex:0];
+        return [[tokensResult objectAtIndex:0] objectAtIndex:0];
     }
     
     return nil;

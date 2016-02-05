@@ -174,8 +174,25 @@ NSMutableArray *imagesForUploadData;
         return;
     }
     
+    id completion = ^(NSString *response, NSNumber *statusCode) {
+
+        NSLog(@"%@", response);
+        NSLog(@"%@", statusCode);
+    };
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSString *serverUrl = [NSString stringWithFormat:@"%@%@", SERVER_URL, CREATE_PARTY_URI];
+    
+    CreatePartyRequestModel *createPartyRequestModel = [[CreatePartyRequestModel alloc] initWithTitle:self.titleInput.text description:self.descriptionInput.text locationAddress:self.locationAddress longitude:self.longitude latitude:self.latitude startTime:self.startTime];
+    
+    NSDictionary *customHeaders = @{
+                                    @"Content-Type": @"application/json",
+                                    @"Authorization": [NSString stringWithFormat:@"%@%@", @"Bearer ", self.token]
+                                    };
+    
+    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+    [httpRequester postAtUrl:serverUrl withFormDataData:[createPartyRequestModel toJSONString] andCustomHeaders:customHeaders completion:completion];
+    
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL)validateFields {

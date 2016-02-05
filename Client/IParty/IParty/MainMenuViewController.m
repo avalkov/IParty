@@ -53,12 +53,12 @@ static NSArray *image_array, *label_array, *segues_array;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    /*
+    
     if ([segue.identifier isEqualToString:@"setupPartyIdentifer"] && [segue.destinationViewController isKindOfClass:[SetupPartyViewController class]]) {
         
         SetupPartyViewController *spvc = (SetupPartyViewController *)segue.destinationViewController;
+        spvc.token = self.token;
     }
-    */
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
