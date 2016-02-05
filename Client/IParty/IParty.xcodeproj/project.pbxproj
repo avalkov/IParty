@@ -12,6 +12,9 @@
 		736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 736490B41C638E5B009E5FFA /* libsqlite3.tbd */; };
 		736490BA1C638F00009E5FFA /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B91C638F00009E5FFA /* DBManager.m */; };
 		736490BC1C6390F5009E5FFA /* sampledb.sql in Resources */ = {isa = PBXBuildFile; fileRef = 736490BB1C6390F5009E5FFA /* sampledb.sql */; };
+		736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490BE1C640FB1009E5FFA /* SendInviteViewController.m */; };
+		736490C21C641B1E009E5FFA /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490C11C641B1E009E5FFA /* HistoryViewController.m */; };
+		736490C51C641C92009E5FFA /* FindPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490C41C641C92009E5FFA /* FindPartyViewController.m */; };
 		737F7DFD1C60DB5C008DDB41 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7DFC1C60DB5C008DDB41 /* main.m */; };
 		737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7DFF1C60DB5C008DDB41 /* AppDelegate.m */; };
 		737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E021C60DB5C008DDB41 /* MainMenuViewController.m */; };
@@ -37,6 +40,12 @@
 		736490B81C638ECC009E5FFA /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		736490B91C638F00009E5FFA /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		736490BB1C6390F5009E5FFA /* sampledb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampledb.sql; sourceTree = "<group>"; };
+		736490BD1C640FB1009E5FFA /* SendInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInviteViewController.h; sourceTree = "<group>"; };
+		736490BE1C640FB1009E5FFA /* SendInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInviteViewController.m; sourceTree = "<group>"; };
+		736490C01C641B1E009E5FFA /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		736490C11C641B1E009E5FFA /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
+		736490C31C641C92009E5FFA /* FindPartyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPartyViewController.h; sourceTree = "<group>"; };
+		736490C41C641C92009E5FFA /* FindPartyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPartyViewController.m; sourceTree = "<group>"; };
 		737F7DF81C60DB5C008DDB41 /* IParty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IParty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		737F7DFC1C60DB5C008DDB41 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		737F7DFE1C60DB5C008DDB41 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -159,6 +168,12 @@
 				737F7E281C616C85008DDB41 /* LoginViewController.m */,
 				737F7E2A1C616C95008DDB41 /* RegisterViewController.h */,
 				737F7E2B1C616C95008DDB41 /* RegisterViewController.m */,
+				736490BD1C640FB1009E5FFA /* SendInviteViewController.h */,
+				736490BE1C640FB1009E5FFA /* SendInviteViewController.m */,
+				736490C01C641B1E009E5FFA /* HistoryViewController.h */,
+				736490C11C641B1E009E5FFA /* HistoryViewController.m */,
+				736490C31C641C92009E5FFA /* FindPartyViewController.h */,
+				736490C41C641C92009E5FFA /* FindPartyViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -216,6 +231,14 @@
 				TargetAttributes = {
 					737F7DF71C60DB5C008DDB41 = {
 						CreatedOnToolsVersion = 7.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -263,10 +286,13 @@
 				737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */,
 				736490BA1C638F00009E5FFA /* DBManager.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
+				736490C51C641C92009E5FFA /* FindPartyViewController.m in Sources */,
+				736490C21C641B1E009E5FFA /* HistoryViewController.m in Sources */,
 				737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */,
 				737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */,
 				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
 				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
+				736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */,
 				736490AF1C628241009E5FFA /* MessageBox.m in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
 				737F7DFD1C60DB5C008DDB41 /* main.m in Sources */,

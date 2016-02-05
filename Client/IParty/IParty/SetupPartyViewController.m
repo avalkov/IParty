@@ -6,19 +6,23 @@
 //  Copyright © 2016 Swifty. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
+
 #import "AppConstants.h"
 #import "SetupPartyViewController.h"
 #import "UploadImageCollectionViewCell.h"
 
 #import "IParty-Swift.h"
 
-@interface SetupPartyViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SetupPartyViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionInput;
 @property (weak, nonatomic) IBOutlet UITextField *locationInput;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateInput;
 @property (weak, nonatomic) IBOutlet UICollectionView *imagesForUploadCollectionView;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -45,6 +49,14 @@ NSMutableArray *imagesForUploadData;
     self.imagesForUploadCollectionView.backgroundColor = [UIColor clearColor];
     
     [self.imagesForUploadCollectionView registerNib:[UINib nibWithNibName:@"UploadImageCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"CollectionCellIdentifer"];
+    
+    self.locationManager.delegate = self;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(detectLocation)];
+    doubleTap.numberOfTapsRequired = 2;
+    [self.locationInput addGestureRecognizer:doubleTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -52,6 +64,15 @@ NSMutableArray *imagesForUploadData;
     [super viewWillAppear:animated];
     
     self.navigationItem.hidesBackButton = NO;
+}
+
+- (CLLocationManager *)locationManager {
+    
+    if(_locationManager == nil) {
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+    
+    return _locationManager;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
@@ -116,6 +137,20 @@ NSMutableArray *imagesForUploadData;
     NSString *formatedDate = [dateFormatter stringFromDate:self.dateInput.date];
     
     NSLog(@"%@", formatedDate);
+}
+
+- (void)detectLocation {
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"%@", [locations lastObject]);
+    [manager stopUpdatingLocation];
 }
 
 - (IBAction)submitAction:(id)sender {

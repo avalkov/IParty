@@ -26,7 +26,7 @@ static NSArray *image_array, *label_array, *segues_array;
     
     self.view.backgroundColor = [UIColor whiteColor];
     image_array = [NSArray arrayWithObjects: @"setupPartyImage.jpg", @"findPartyImage", @"sendInviteImage", @"reviewMemoriesImage", nil ];
-    label_array = [NSArray arrayWithObjects: @"Setup Party", @"Find Party", @"Send Invite", @"Memories", nil];
+    label_array = [NSArray arrayWithObjects: @"Setup Party", @"Find Party", @"Send Invite", @"History", nil];
     segues_array = [NSArray arrayWithObjects: @"setupPartyIdentifer", @"findPartyIdentifer", @"sendInviteIdentifer", @"reviewMemoriesIdentifer", nil];
     
     self.collectionView.delegate = self;
