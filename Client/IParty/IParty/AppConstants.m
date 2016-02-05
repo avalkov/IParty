@@ -15,5 +15,7 @@ NSString *const SERVER_URL = @"http://192.168.168.1:59651/";
 NSString *const REGISTRATION_URI = @"api/account/register";
 NSString *const LOGIN_URI = @"token";
 NSString *const CREATE_PARTY_URI = @"api/party";
+NSString *const UPLOAD_IMAGE_URI = @"api/images";
 
 int const HTTP_STATUS_OK = 200;
+int const HTTP_STATUS_CREATED = 201;

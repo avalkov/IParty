@@ -11,7 +11,7 @@
 
 @interface MessageBox : NSObject
 
-- (void)showAlertWithTitle:(NSString *)title viewController:(UIViewController*) viewController andMessage:(NSString *) message;
-- (void)showConfirmationBoxWithTitle:(NSString *)title viewController:(UIViewController*) viewController completion: (void(^)(UIAlertAction *)) completion andMessage:(NSString *) message;
++ (void)showAlertWithTitle:(NSString *)title viewController:(UIViewController*) viewController andMessage:(NSString *) message;
++ (void)showConfirmationBoxWithTitle:(NSString *)title viewController:(UIViewController*) viewController completion: (void(^)(UIAlertAction *)) completion andMessage:(NSString *) message;
 
 @end

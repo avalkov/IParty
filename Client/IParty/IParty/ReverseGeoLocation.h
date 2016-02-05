@@ -11,6 +11,6 @@
 
 @interface ReverseGeoLocation: NSObject
 
--(NSString *)getGoogleAddressFromLatLong : (CGFloat)lat lon:(CGFloat)lon;
++(NSString *)getGoogleAddressFromLatLong : (CGFloat)lat lon:(CGFloat)lon;
 
 @end

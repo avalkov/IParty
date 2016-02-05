@@ -51,7 +51,7 @@
     
     [super viewDidAppear:animated];
 
-    self.token = [self loadTokenFromDb];
+    self.token = nil;//[self loadTokenFromDb];
     
     if(self.token != nil) {
         
@@ -93,7 +93,7 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     __weak typeof(self) weakSelf = self;
-                    [[MessageBox alloc] showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
+                    [MessageBox showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
                 });
                 
             } if([statusCode intValue] == HTTP_STATUS_OK) {
@@ -117,14 +117,14 @@
                         [self performSegueWithIdentifier:@"mainIdentifer" sender:self];
                     };
                     
-                    [[MessageBox alloc] showConfirmationBoxWithTitle:@"Stay signed" viewController:weakSelf completion:completion andMessage:@"Would you like to stay signed in ?"];
+                    [MessageBox showConfirmationBoxWithTitle:@"Stay signed" viewController:weakSelf completion:completion andMessage:@"Would you like to stay signed in ?"];
                 });
                 
             } else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     __weak typeof(self) weakSelf = self;
-                    [[MessageBox alloc] showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"Wrong username or password"];
+                    [MessageBox showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"Wrong username or password"];
                 });
             }
         };
@@ -141,13 +141,13 @@
     
     if(self.usernameInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Empty username" viewController:weakSelf andMessage:@"Please fill username"];
+        [MessageBox showAlertWithTitle:@"Empty username" viewController:weakSelf andMessage:@"Please fill username"];
         return NO;
     }
     
     if(self.passwordInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Empty password" viewController:weakSelf andMessage:@"Please fill password"];
+        [MessageBox showAlertWithTitle:@"Empty password" viewController:weakSelf andMessage:@"Please fill password"];
         return NO;
     }
     

@@ -10,7 +10,7 @@
 
 @implementation ReverseGeoLocation
 
--(NSString *)getGoogleAddressFromLatLong : (CGFloat)lat lon:(CGFloat)lon {
++(NSString *)getGoogleAddressFromLatLong : (CGFloat)lat lon:(CGFloat)lon {
     
     NSError *error = nil;
     

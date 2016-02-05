@@ -10,7 +10,7 @@
 
 @implementation MessageBox
 
-- (void)showAlertWithTitle:(NSString *)title viewController:(UIViewController*) viewController andMessage:(NSString *) message {
++ (void)showAlertWithTitle:(NSString *)title viewController:(UIViewController*) viewController andMessage:(NSString *) message {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     
@@ -20,7 +20,7 @@
     [viewController presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)showConfirmationBoxWithTitle:(NSString *)title viewController:(UIViewController*) viewController completion: (void(^)(UIAlertAction *)) completion andMessage:(NSString *) message {
++ (void)showConfirmationBoxWithTitle:(NSString *)title viewController:(UIViewController*) viewController completion: (void(^)(UIAlertAction *)) completion andMessage:(NSString *) message {
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
     

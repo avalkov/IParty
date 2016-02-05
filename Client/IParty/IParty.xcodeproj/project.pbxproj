@@ -10,6 +10,7 @@
 		0A35E212B366A896D71F9158 /* libPods-IParty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B7178E1F40AEF11891FC094 /* libPods-IParty.a */; };
 		73321E8A1C64C6FC008A0B5C /* CreatePartyRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E891C64C6FC008A0B5C /* CreatePartyRequestModel.m */; };
 		73321E901C64E86D008A0B5C /* ReverseGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E8F1C64E86D008A0B5C /* ReverseGeoLocation.m */; };
+		73321E941C650D82008A0B5C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E931C650D82008A0B5C /* HttpHelper.m */; };
 		736490AF1C628241009E5FFA /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490AE1C628241009E5FFA /* MessageBox.m */; };
 		736490B11C6293E4009E5FFA /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B01C6293E4009E5FFA /* AppConstants.m */; };
 		736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 736490B41C638E5B009E5FFA /* libsqlite3.tbd */; };
@@ -40,6 +41,8 @@
 		73321E891C64C6FC008A0B5C /* CreatePartyRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePartyRequestModel.m; sourceTree = "<group>"; };
 		73321E8F1C64E86D008A0B5C /* ReverseGeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReverseGeoLocation.m; sourceTree = "<group>"; };
 		73321E911C64E885008A0B5C /* ReverseGeoLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReverseGeoLocation.h; sourceTree = "<group>"; };
+		73321E921C650D82008A0B5C /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		73321E931C650D82008A0B5C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		736490A91C627DC5009E5FFA /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		736490AD1C628241009E5FFA /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		736490AE1C628241009E5FFA /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 				736490AE1C628241009E5FFA /* MessageBox.m */,
 				73321E8F1C64E86D008A0B5C /* ReverseGeoLocation.m */,
 				73321E911C64E885008A0B5C /* ReverseGeoLocation.h */,
+				73321E921C650D82008A0B5C /* HttpHelper.h */,
+				73321E931C650D82008A0B5C /* HttpHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */,
 				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
 				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
+				73321E941C650D82008A0B5C /* HttpHelper.m in Sources */,
 				736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */,
 				736490AF1C628241009E5FFA /* MessageBox.m in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,

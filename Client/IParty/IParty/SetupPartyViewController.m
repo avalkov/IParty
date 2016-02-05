@@ -14,6 +14,7 @@
 #import "MessageBox.h"
 #import "CreatePartyRequestModel.h"
 #import "ReverseGeoLocation.h"
+#import "HttpHelper.h"
 
 #import "JSONModel.h"
 
@@ -163,7 +164,7 @@ NSMutableArray *imagesForUploadData;
     
     self.latitude = [NSNumber numberWithFloat:location.coordinate.latitude];
     self.longitude = [NSNumber numberWithFloat:location.coordinate.longitude];
-    self.locationAddress = [[ReverseGeoLocation alloc] getGoogleAddressFromLatLong:self.latitude.floatValue lon:self.longitude.floatValue];
+    self.locationAddress = [ReverseGeoLocation getGoogleAddressFromLatLong:self.latitude.floatValue lon:self.longitude.floatValue];
     
     self.locationInput.text = self.locationAddress;
 }
@@ -192,6 +193,16 @@ NSMutableArray *imagesForUploadData;
     HttpRequester *httpRequester = [[HttpRequester alloc] init];
     [httpRequester postAtUrl:serverUrl withFormDataData:[createPartyRequestModel toJSONString] andCustomHeaders:customHeaders completion:completion];
     
+    httpRequester = [[HttpRequester alloc] init];
+    
+    NSString *boundary = [HttpHelper generateBoundary];
+    serverUrl = [NSString stringWithFormat:@"%@%@/1", SERVER_URL, UPLOAD_IMAGE_URI];
+    [customHeaders setValue:[NSString stringWithFormat:@"%@%@", @"multipart/form-data; boundary=", boundary] forKey:@"Content-Type"];
+    
+    NSData *data = UIImageJPEGRepresentation([imagesForUploadData objectAtIndex:0], 0.1f);
+
+    [httpRequester uploadFileAtUrl:serverUrl withFileData:data boundary:boundary mimetype:[HttpHelper getMimeTypeOfImage:data] andCustomHeaders:customHeaders completion:completion];
+    
     //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
@@ -199,25 +210,25 @@ NSMutableArray *imagesForUploadData;
     
     if(self.titleInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Empty title" viewController:weakSelf andMessage:@"Please enter title"];
+        [MessageBox showAlertWithTitle:@"Empty title" viewController:weakSelf andMessage:@"Please enter title"];
         return NO;
     }
     
     if(self.descriptionInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Empty description" viewController:weakSelf andMessage:@"Please enter description"];
+        [MessageBox showAlertWithTitle:@"Empty description" viewController:weakSelf andMessage:@"Please enter description"];
         return NO;
     }
     
     if(self.locationInput.text.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Empty location" viewController:weakSelf andMessage:@"Please enter location"];
+        [MessageBox showAlertWithTitle:@"Empty location" viewController:weakSelf andMessage:@"Please enter location"];
         return NO;
     }
     
     if(self.startTime.length == 0) {
         __weak typeof(self) weakSelf = self;
-        [[MessageBox alloc] showAlertWithTitle:@"Unknown start time" viewController:weakSelf andMessage:@"Please select start time"];
+        [MessageBox showAlertWithTitle:@"Unknown start time" viewController:weakSelf andMessage:@"Please select start time"];
         return NO;
     }
     
