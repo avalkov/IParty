@@ -10,4 +10,6 @@
 
 @interface SendInviteViewController : UIViewController
 
+@property (nonatomic, strong) NSString *token;
+
 @end

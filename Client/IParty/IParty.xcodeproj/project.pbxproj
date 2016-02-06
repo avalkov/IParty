@@ -11,6 +11,8 @@
 		73321E8A1C64C6FC008A0B5C /* CreatePartyRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E891C64C6FC008A0B5C /* CreatePartyRequestModel.m */; };
 		73321E901C64E86D008A0B5C /* ReverseGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E8F1C64E86D008A0B5C /* ReverseGeoLocation.m */; };
 		73321E941C650D82008A0B5C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E931C650D82008A0B5C /* HttpHelper.m */; };
+		73321E971C6602DA008A0B5C /* ContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E961C6602DA008A0B5C /* ContactModel.m */; };
+		73321E9A1C661A38008A0B5C /* PartyResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E991C661A38008A0B5C /* PartyResponseModel.m */; };
 		736490AF1C628241009E5FFA /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490AE1C628241009E5FFA /* MessageBox.m */; };
 		736490B11C6293E4009E5FFA /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B01C6293E4009E5FFA /* AppConstants.m */; };
 		736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 736490B41C638E5B009E5FFA /* libsqlite3.tbd */; };
@@ -43,6 +45,10 @@
 		73321E911C64E885008A0B5C /* ReverseGeoLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReverseGeoLocation.h; sourceTree = "<group>"; };
 		73321E921C650D82008A0B5C /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		73321E931C650D82008A0B5C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		73321E951C6602DA008A0B5C /* ContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactModel.h; sourceTree = "<group>"; };
+		73321E961C6602DA008A0B5C /* ContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactModel.m; sourceTree = "<group>"; };
+		73321E981C661A38008A0B5C /* PartyResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyResponseModel.h; sourceTree = "<group>"; };
+		73321E991C661A38008A0B5C /* PartyResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyResponseModel.m; sourceTree = "<group>"; };
 		736490A91C627DC5009E5FFA /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		736490AD1C628241009E5FFA /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		736490AE1C628241009E5FFA /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
@@ -103,6 +109,10 @@
 			children = (
 				73321E881C64C6FC008A0B5C /* CreatePartyRequestModel.h */,
 				73321E891C64C6FC008A0B5C /* CreatePartyRequestModel.m */,
+				73321E951C6602DA008A0B5C /* ContactModel.h */,
+				73321E961C6602DA008A0B5C /* ContactModel.m */,
+				73321E981C661A38008A0B5C /* PartyResponseModel.h */,
+				73321E991C661A38008A0B5C /* PartyResponseModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -382,6 +392,7 @@
 				737F7E291C616C85008DDB41 /* LoginViewController.m in Sources */,
 				736490B11C6293E4009E5FFA /* AppConstants.m in Sources */,
 				73321E8A1C64C6FC008A0B5C /* CreatePartyRequestModel.m in Sources */,
+				73321E9A1C661A38008A0B5C /* PartyResponseModel.m in Sources */,
 				737F7E1D1C60EA19008DDB41 /* SetupPartyViewController.m in Sources */,
 				736490BA1C638F00009E5FFA /* DBManager.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
@@ -397,6 +408,7 @@
 				736490AF1C628241009E5FFA /* MessageBox.m in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
 				737F7DFD1C60DB5C008DDB41 /* main.m in Sources */,
+				73321E971C6602DA008A0B5C /* ContactModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "MainMenuViewController.h"
 #import "MainMenuItemCollectionViewCell.h"
 #import "SetupPartyViewController.h"
+#import "SendInviteViewController.h"
 
 @interface MainMenuViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -58,6 +59,11 @@ static NSArray *image_array, *label_array, *segues_array;
         
         SetupPartyViewController *spvc = (SetupPartyViewController *)segue.destinationViewController;
         spvc.token = self.token;
+        
+    } else if([segue.identifier isEqualToString:@"sendInviteIdentifer"] && [segue.destinationViewController isKindOfClass:[SendInviteViewController class]]) {
+        
+        SendInviteViewController *sivc = (SendInviteViewController *)segue.destinationViewController;
+        sivc.token = self.token;
     }
 }
 
@@ -97,8 +103,6 @@ static NSArray *image_array, *label_array, *segues_array;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Clicked row: %ld col: %ld", (long)indexPath.row, (long)indexPath.section);
-    
     [self performSegueWithIdentifier:[segues_array objectAtIndex:(2 * indexPath.section) + indexPath.row] sender:self];
 }
 

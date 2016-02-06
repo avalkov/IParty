@@ -321,17 +321,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7z-EA-ceF">
-                                <rect key="frame" x="221" y="285" width="158" height="30"/>
-                                <state key="normal" title="Browser Contacts"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7z-EA-ceF">
+                                <rect key="frame" x="20" y="216" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.41740622509999997" green="0.71695927680000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Select contact">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="browseContactsAction:" destination="kO9-08-U8I" eventType="touchUpInside" id="HAp-Qc-7QX"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWD-yp-fs1">
+                                <rect key="frame" x="20" y="254" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.41740622509999997" green="0.71695927680000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send invites">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LxR-SP-PRi">
+                                <rect key="frame" x="20" y="292" width="560" height="288"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KX5-Se-oTI">
+                                <rect key="frame" x="20" y="72" width="560" height="136"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="136" id="sMJ-YE-1f7"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EWD-yp-fs1" firstAttribute="leading" secondItem="LxR-SP-PRi" secondAttribute="leading" id="1tz-I0-ZGc"/>
+                            <constraint firstItem="s7z-EA-ceF" firstAttribute="trailing" secondItem="EWD-yp-fs1" secondAttribute="trailing" id="6mU-uW-XqN"/>
+                            <constraint firstItem="KX5-Se-oTI" firstAttribute="trailing" secondItem="s7z-EA-ceF" secondAttribute="trailing" id="JDJ-qP-oqs"/>
+                            <constraint firstItem="KX5-Se-oTI" firstAttribute="leading" secondItem="HSc-SW-Uxf" secondAttribute="leadingMargin" id="LmJ-Ip-dOf"/>
+                            <constraint firstItem="s7z-EA-ceF" firstAttribute="leading" secondItem="EWD-yp-fs1" secondAttribute="leading" id="Vnt-iH-8xg"/>
+                            <constraint firstAttribute="bottom" secondItem="LxR-SP-PRi" secondAttribute="bottom" constant="20" symbolic="YES" id="Vyc-Ax-TKv"/>
+                            <constraint firstItem="LxR-SP-PRi" firstAttribute="top" secondItem="EWD-yp-fs1" secondAttribute="bottom" constant="8" symbolic="YES" id="XoX-UW-aFk"/>
+                            <constraint firstItem="EWD-yp-fs1" firstAttribute="trailing" secondItem="LxR-SP-PRi" secondAttribute="trailing" id="ZT7-2I-BSH"/>
+                            <constraint firstItem="s7z-EA-ceF" firstAttribute="top" secondItem="KX5-Se-oTI" secondAttribute="bottom" constant="8" symbolic="YES" id="dOC-u1-jSq"/>
+                            <constraint firstItem="KX5-Se-oTI" firstAttribute="top" secondItem="Fds-Nm-Km7" secondAttribute="bottom" constant="8" symbolic="YES" id="e8S-HF-pWs"/>
+                            <constraint firstItem="KX5-Se-oTI" firstAttribute="leading" secondItem="s7z-EA-ceF" secondAttribute="leading" id="gpv-ZL-ReJ"/>
+                            <constraint firstItem="EWD-yp-fs1" firstAttribute="top" secondItem="s7z-EA-ceF" secondAttribute="bottom" constant="8" symbolic="YES" id="hUm-zJ-q1g"/>
+                            <constraint firstItem="KX5-Se-oTI" firstAttribute="trailing" secondItem="HSc-SW-Uxf" secondAttribute="trailingMargin" id="x25-RY-cJG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Send Invite" id="hPe-4H-eg3"/>
+                    <connections>
+                        <outlet property="partyPicker" destination="KX5-Se-oTI" id="Zh5-eW-eGf"/>
+                        <outlet property="tableView" destination="LxR-SP-PRi" id="erV-cF-cG2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6l-qQ-OUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
