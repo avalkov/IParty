@@ -30,13 +30,22 @@
 
         [Required]
         [MinLength(20), MaxLength(500)]
-        public string Desription { get; set; }
+        public string Description { get; set; }
 
         [Required]
         public DateTime CreationTime { get; set; }
 
         [Required]
         public DateTime StartTime { get; set; }
+
+        [Required]
+        public double Longitude { get; set; }
+
+        [Required]
+        public double Latitude { get; set; }
+
+        [Required]
+        public string LocationAddress { get; set; }
 
         public string UserId { get; set; }
 

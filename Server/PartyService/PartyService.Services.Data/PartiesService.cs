@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-    using Microsoft.AspNet.Identity;
+    using System.Data.Entity.SqlServer;
 
     using Contracts;
     using Models;
@@ -46,13 +46,17 @@
             return true;
         }
 
-        public Party CreateParty(string userId, string title, string description, DateTime startTime, DateTime creationTime)
+        public Party CreateParty(string userId, string title, string description, double longitude, double latidude, 
+            string locationAddress, DateTime startTime, DateTime creationTime)
         {
             var party = new Party()
             {
                 UserId = userId,
                 Title = title,
-                Desription = description,
+                Description = description,
+                Longitude = longitude,
+                Latitude = latidude,
+                LocationAddress = locationAddress,
                 StartTime = startTime,
                 CreationTime = creationTime
             };
@@ -74,6 +78,23 @@
             return this.parties
                 .All()
                 .Where(p => p.Id == partyId);
+        }
+
+        public IQueryable<Party> GetUserParties(string userId)
+        {
+            return this.users
+                .All()
+                .Where(u => u.Id == userId)
+                .SelectMany(u => u.Parties);
+        }
+
+        public IQueryable<Party> GetNearbyParties(double latitude, double longitude)
+        {
+            // Haversine formula : https://en.wikipedia.org/wiki/Haversine_formula
+
+            return this.parties.All().OrderBy(x => 12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
+                                                SqlFunctions.Cos((SqlFunctions.Pi() / 180) * latitude) * SqlFunctions.Cos((SqlFunctions.Pi() / 180) * (x.Latitude)) *
+                                                SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2))));
         }
     }
 }

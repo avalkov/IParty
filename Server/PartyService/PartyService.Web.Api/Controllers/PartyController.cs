@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Web.Http;
+    using System.Collections.Generic;
     using Microsoft.AspNet.Identity;
 
     using AutoMapper.QueryableExtensions;
@@ -29,8 +30,9 @@
             DateTime creationTime = DateTime.Now;
             
             var newParty = this.partyService
-                .CreateParty(userId, createPartyRequestModel.Title, 
-                createPartyRequestModel.Description, createPartyRequestModel.StartTime, creationTime);
+                .CreateParty(userId, createPartyRequestModel.Title, createPartyRequestModel.Description, 
+                createPartyRequestModel.Longitude, createPartyRequestModel.Latitude, createPartyRequestModel.LocationAddress,
+                createPartyRequestModel.StartTime, creationTime);
 
             var partyResult = this.partyService
                 .GetPartyDetails(newParty.Id)
@@ -38,6 +40,18 @@
                 .FirstOrDefault();
 
             return this.Created<ListedPartyResponseModel>("", partyResult);
+        }
+
+        public IHttpActionResult GetCurrentUserParties()
+        {
+            var userId = this.User.Identity.GetUserId();
+
+            var partyResult = this.partyService
+                .GetUserParties(userId)
+                .ProjectTo<ListedPartyResponseModel>()
+                .ToList();
+
+            return this.Ok<List<ListedPartyResponseModel>>(partyResult);
         }
     }
 }

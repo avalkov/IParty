@@ -24,7 +24,8 @@
 
         [Route("api/images/{partyId}")]
         public async Task<IHttpActionResult> Post(int partyId)
-        {
+        { 
+            
             if (Request.Content.IsMimeMultipartContent() == false)
             {
                 return this.BadRequest();

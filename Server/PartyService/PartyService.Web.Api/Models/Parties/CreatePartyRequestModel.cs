@@ -13,5 +13,14 @@
 
         [Required]
         public DateTime StartTime { get; set; }
+
+        [Required]
+        public double Longitude { get; set; }
+
+        [Required]
+        public double Latitude { get; set; }
+
+        [Required]
+        public string LocationAddress { get; set; }
     }
 }
