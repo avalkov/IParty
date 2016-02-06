@@ -11,7 +11,8 @@
     using Services.Data.Contracts;
     using Infrastructure.Validation;
     using Models.Parties;
-    
+    using Common.Utilities;
+
     [Authorize]
     public class PartyController : ApiController
     {
@@ -50,6 +51,28 @@
                 .GetUserParties(userId)
                 .ProjectTo<ListedPartyResponseModel>()
                 .ToList();
+
+            return this.Ok<List<ListedPartyResponseModel>>(partyResult);
+        }
+
+        [Route("api/party/search")]
+        [HttpPost]
+        [ValidateModel]
+        public IHttpActionResult GetNearbyParties(FindPartyRequestModel findPartyRequestModel)
+        {
+            var partyResult = this.partyService
+                .GetNearbyParties(findPartyRequestModel.Latitude, findPartyRequestModel.Longitude)
+                .ProjectTo<ListedPartyResponseModel>()
+                .ToList();
+
+            var geotool = new GeoCoordinateTool();
+            GeoCoordinate userCoordinates = new GeoCoordinate(findPartyRequestModel.Latitude, findPartyRequestModel.Longitude);
+
+            for (int i = 0; i < partyResult.Count; i++)
+            {
+                GeoCoordinate partyCoordinates = new GeoCoordinate(partyResult[i].Latitude, partyResult[i].Longitude);
+                partyResult[i].Distance = Math.Round(geotool.Distance(userCoordinates, partyCoordinates), 2);
+            }
 
             return this.Ok<List<ListedPartyResponseModel>>(partyResult);
         }
