@@ -9,22 +9,26 @@
 @import Contacts;
 @import ContactsUI;
 
+#import <MessageUI/MFMessageComposeViewController.h>
+
 #import "AppConstants.h"
 #import "SendInviteViewController.h"
 #import "ContactModel.h"
 #import "PartyResponseModel.h"
+#import "MessageBox.h"
 
 #import "JSONModel.h"
 
 #import "IParty-Swift.h"
 
-@interface SendInviteViewController() <CNContactPickerDelegate, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface SendInviteViewController() <CNContactPickerDelegate, UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIPickerView *partyPicker;
 
 @property (nonatomic, strong) NSMutableArray *contacts;
 @property (nonatomic, strong) NSMutableArray *parties;
+@property (nonatomic, strong) PartyResponseModel *selectedParty;
 
 @end
 
@@ -69,7 +73,13 @@
         self.parties = [PartyResponseModel arrayOfModelsFromDictionaries:jsonArr error:nil];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.partyPicker reloadAllComponents];
+            
+            if([self.parties count] == 0) {
+                [MessageBox showAlertWithTitle:@"Error" viewController:self andMessage:@"You are not member of any parties"];
+            } else {
+                self.selectedParty = [self.parties objectAtIndex:0];
+                [self.partyPicker reloadAllComponents];
+            }
         });
     };
     
@@ -85,7 +95,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%@", self.parties[row]);
+    self.selectedParty = self.parties[row];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -126,8 +136,6 @@
         if([phoneNumberEntry.label isEqualToString:@"_$!<Mobile>!$_"]) {
             
             [contactModel.mobilePhoneNumbers addObject:phoneNumberEntry.value.stringValue];
-            // NSLog(@"%@ %@", contact.givenName, contact.familyName);
-            // NSLog(@"%@", phoneNumberEntry.value.stringValue);
         }
     }
     
@@ -161,5 +169,50 @@
     return cell;
 }
 
+- (IBAction)sendInvitesAction:(id)sender {
+    
+    if(self.selectedParty == nil) {
+        
+        [MessageBox showAlertWithTitle:@"Error" viewController:self andMessage:@"Please select party to which to invite some of your contacts"];
+        return;
+    }
+    
+    if([self.contacts count] == 0) {
+        
+        [MessageBox showAlertWithTitle:@"Error" viewController:self andMessage:@"Please select contacts which to send invites to"];
+        return;
+    }
+    
+    NSMutableArray *recipients = [[NSMutableArray alloc] init];
+    
+    for(int i = 0; i < [self.contacts count]; i++) {
+        ContactModel *contact = self.contacts[i];
+        for(int j = 0; j < [contact.mobilePhoneNumbers count]; j++) {
+            [recipients addObject:contact.mobilePhoneNumbers[j]];
+        }
+    }
+    
+    MFMessageComposeViewController *sendSMSController = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        sendSMSController.body = self.selectedParty.pDescription;
+        sendSMSController.recipients = recipients;
+        sendSMSController.messageComposeDelegate = self;
+        [self presentViewController:sendSMSController animated:YES completion:nil];
+    }
+    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+     if (result == MessageComposeResultCancelled)
+         NSLog(@"Message cancelled");
+     else if (result == MessageComposeResultSent)
+         NSLog(@"Message sent");
+     else
+         NSLog(@"Message failed");
+}
 
 @end

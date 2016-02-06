@@ -309,7 +309,7 @@
             </objects>
             <point key="canvasLocation" x="2820" y="-621"/>
         </scene>
-        <!--Send Invite-->
+        <!--Send Invites-->
         <scene sceneID="FTO-64-0wo">
             <objects>
                 <viewController id="kO9-08-U8I" customClass="SendInviteViewController" sceneMemberID="viewController">
@@ -331,13 +331,6 @@
                                     <action selector="browseContactsAction:" destination="kO9-08-U8I" eventType="touchUpInside" id="HAp-Qc-7QX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWD-yp-fs1">
-                                <rect key="frame" x="20" y="254" width="560" height="30"/>
-                                <color key="backgroundColor" red="0.41740622509999997" green="0.71695927680000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Send invites">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LxR-SP-PRi">
                                 <rect key="frame" x="20" y="292" width="560" height="288"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,6 +341,16 @@
                                     <constraint firstAttribute="height" constant="136" id="sMJ-YE-1f7"/>
                                 </constraints>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWD-yp-fs1">
+                                <rect key="frame" x="20" y="254" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.41740622509999997" green="0.71695927680000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Send invites">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendInvitesAction:" destination="kO9-08-U8I" eventType="touchUpInside" id="P1D-8b-wh4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -366,7 +369,7 @@
                             <constraint firstItem="KX5-Se-oTI" firstAttribute="trailing" secondItem="HSc-SW-Uxf" secondAttribute="trailingMargin" id="x25-RY-cJG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Send Invite" id="hPe-4H-eg3"/>
+                    <navigationItem key="navigationItem" title="Send Invites" id="hPe-4H-eg3"/>
                     <connections>
                         <outlet property="partyPicker" destination="KX5-Se-oTI" id="Zh5-eW-eGf"/>
                         <outlet property="tableView" destination="LxR-SP-PRi" id="erV-cF-cG2"/>

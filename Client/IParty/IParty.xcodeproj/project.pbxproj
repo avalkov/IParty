@@ -13,6 +13,7 @@
 		73321E941C650D82008A0B5C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E931C650D82008A0B5C /* HttpHelper.m */; };
 		73321E971C6602DA008A0B5C /* ContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E961C6602DA008A0B5C /* ContactModel.m */; };
 		73321E9A1C661A38008A0B5C /* PartyResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73321E991C661A38008A0B5C /* PartyResponseModel.m */; };
+		73321E9C1C662BA0008A0B5C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73321E9B1C662BA0008A0B5C /* MessageUI.framework */; };
 		736490AF1C628241009E5FFA /* MessageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490AE1C628241009E5FFA /* MessageBox.m */; };
 		736490B11C6293E4009E5FFA /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B01C6293E4009E5FFA /* AppConstants.m */; };
 		736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 736490B41C638E5B009E5FFA /* libsqlite3.tbd */; };
@@ -49,6 +50,7 @@
 		73321E961C6602DA008A0B5C /* ContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactModel.m; sourceTree = "<group>"; };
 		73321E981C661A38008A0B5C /* PartyResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyResponseModel.h; sourceTree = "<group>"; };
 		73321E991C661A38008A0B5C /* PartyResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyResponseModel.m; sourceTree = "<group>"; };
+		73321E9B1C662BA0008A0B5C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		736490A91C627DC5009E5FFA /* AppConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConstants.h; sourceTree = "<group>"; };
 		736490AD1C628241009E5FFA /* MessageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBox.h; sourceTree = "<group>"; };
 		736490AE1C628241009E5FFA /* MessageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBox.m; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73321E9C1C662BA0008A0B5C /* MessageUI.framework in Frameworks */,
 				736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */,
 				0A35E212B366A896D71F9158 /* libPods-IParty.a in Frameworks */,
 			);
@@ -252,6 +255,7 @@
 		E86FF0E6448A60BD0DF2CC6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73321E9B1C662BA0008A0B5C /* MessageUI.framework */,
 				8B7178E1F40AEF11891FC094 /* libPods-IParty.a */,
 			);
 			name = Frameworks;
