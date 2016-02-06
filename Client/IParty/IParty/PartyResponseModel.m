@@ -14,7 +14,9 @@
     return [[JSONKeyMapper alloc] initWithDictionary:@{
                                                        @"Id":@"pId",
                                                        @"Title":@"title",
-                                                       @"Description": @"pDescription"
+                                                       @"Description": @"pDescription",
+                                                       @"Distance":@"distance",
+                                                       @"ImageUrl":@"frontImageUrl"
                                                        }];
 }
 

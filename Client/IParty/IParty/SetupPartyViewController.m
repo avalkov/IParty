@@ -132,8 +132,6 @@ NSMutableArray *imagesForUploadData;
 
     [imagesForUploadData addObject:[info objectForKey:UIImagePickerControllerOriginalImage]];
     [self.imagesForUploadCollectionView reloadData];
-    //NSData *flatImage = UIImageJPEGRepresentation(image, 0.1f);
-
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration

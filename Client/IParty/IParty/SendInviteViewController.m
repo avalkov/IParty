@@ -172,14 +172,14 @@
 - (IBAction)sendInvitesAction:(id)sender {
     
     if(self.selectedParty == nil) {
-        
-        [MessageBox showAlertWithTitle:@"Error" viewController:self andMessage:@"Please select party to which to invite some of your contacts"];
+        __weak typeof(self) weakSelf = self;
+        [MessageBox showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"Please select party to which to invite some of your contacts"];
         return;
     }
     
     if([self.contacts count] == 0) {
-        
-        [MessageBox showAlertWithTitle:@"Error" viewController:self andMessage:@"Please select contacts which to send invites to"];
+        __weak typeof(self) weakSelf = self;
+        [MessageBox showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"Please select contacts which to send invites to"];
         return;
     }
     

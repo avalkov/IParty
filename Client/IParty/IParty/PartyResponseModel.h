@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSNumber *pId;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *pDescription;
-
+@property (nonatomic, strong) NSNumber *distance;
+@property (nonatomic, strong) NSString *frontImageUrl;
 @end

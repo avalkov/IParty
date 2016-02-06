@@ -10,6 +10,7 @@
 #import "MainMenuItemCollectionViewCell.h"
 #import "SetupPartyViewController.h"
 #import "SendInviteViewController.h"
+#import "FindPartyViewController.h"
 
 @interface MainMenuViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -64,6 +65,11 @@ static NSArray *image_array, *label_array, *segues_array;
         
         SendInviteViewController *sivc = (SendInviteViewController *)segue.destinationViewController;
         sivc.token = self.token;
+        
+    } else if([segue.identifier isEqualToString:@"findPartyIdentifer"] && [segue.destinationViewController isKindOfClass:[FindPartyViewController class]]) {
+        
+        FindPartyViewController *fpvc = (FindPartyViewController *)segue.destinationViewController;
+        fpvc.token = self.token;
     }
 }
 
