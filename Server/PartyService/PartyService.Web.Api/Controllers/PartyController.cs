@@ -12,7 +12,7 @@
     using Infrastructure.Validation;
     using Models.Parties;
     using Common.Utilities;
-
+    using System.Threading;
     [Authorize]
     public class PartyController : ApiController
     {
@@ -73,6 +73,8 @@
                 GeoCoordinate partyCoordinates = new GeoCoordinate(partyResult[i].Latitude, partyResult[i].Longitude);
                 partyResult[i].Distance = Math.Round(geotool.Distance(userCoordinates, partyCoordinates), 2);
             }
+
+            Thread.Sleep(5000);
 
             return this.Ok<List<ListedPartyResponseModel>>(partyResult);
         }

@@ -7,9 +7,9 @@
 
     public interface IPartyServiceDbContext
     {
-        IDbSet<User> Users { get; set; }
+    //    IDbSet<User> Users { get; set; }
 
-        IDbSet<Party> Parties { get; set; }
+   //     IDbSet<Party> Parties { get; set; }
 
      //   IDbSet<InviteRequest> invitesRequests { get; set; }
 

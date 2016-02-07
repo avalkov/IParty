@@ -1,10 +1,12 @@
 ﻿namespace PartyService.Web.Api.Models.Parties
 {
+    using System.Collections.Generic;
+
     using AutoMapper;
 
     using PartyService.Models;
     using PartyService.Web.Api.Infrastructure.Mappings;
-
+    
     public class ListedPartyResponseModel: IMapFrom<Party>, IHaveCustomMappings
     {
         public int Id { get; set; }
@@ -13,7 +15,7 @@
 
         public string Description { get; set; }
 
-        public string ImageUrl { get; set; }
+        public ICollection<ImageData> ImagesUrls { get; set; }
 
         public int MembersCount { get; set; }
 
@@ -26,7 +28,7 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Party, ListedPartyResponseModel>()
-                .ForMember(lp => lp.ImageUrl, opts => opts.MapFrom(p => p.FrontImageData != null ? p.FrontImageData.Url : null))
+                .ForMember(lp => lp.ImagesUrls, opts => opts.MapFrom(p => p.ImagesData))
                 .ForMember(lp => lp.MembersCount, opts => opts.MapFrom(p => p.Members.Count));
         }
     }

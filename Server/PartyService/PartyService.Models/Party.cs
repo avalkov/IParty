@@ -63,10 +63,11 @@
             set { this.imagesData = value; }
         }
 
+        /*
         public virtual ICollection<InviteRequest> InvitesRequests
         {
             get { return this.invitesRequests; }
             set { this.invitesRequests = value; }
-        }
+        } */
     }
 }

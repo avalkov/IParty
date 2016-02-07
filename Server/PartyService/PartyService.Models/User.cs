@@ -23,11 +23,12 @@
             set { this.parties = value; }
         }
 
+        /*
         public virtual ICollection<InviteResponse> InvitesResponses
         {
             get { return this.invitesResponses; }
             set { this.invitesResponses = value; }
-        }
+        } */
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {

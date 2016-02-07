@@ -62,10 +62,12 @@
             };
 
             var user = this.users
-                .GetById(userId);
+                .All()
+                .Where(u => u.Id == userId)
+                .FirstOrDefault();
 
             this.parties.Add(party);
-            this.parties.SaveChanges();
+            party.Members.Add(user);
 
             user.Parties.Add(party);
             this.users.SaveChanges();
@@ -91,6 +93,10 @@
         public IQueryable<Party> GetNearbyParties(double latitude, double longitude)
         {
             // Haversine formula : https://en.wikipedia.org/wiki/Haversine_formula
+
+            var result = this.parties.All().Select(x => 12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
+                                                SqlFunctions.Cos((SqlFunctions.Pi() / 180) * latitude) * SqlFunctions.Cos((SqlFunctions.Pi() / 180) * (x.Latitude)) *
+                                                SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2)))).ToList();
 
             return this.parties.All().OrderBy(x => 12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
                                                 SqlFunctions.Cos((SqlFunctions.Pi() / 180) * latitude) * SqlFunctions.Cos((SqlFunctions.Pi() / 180) * (x.Latitude)) *
