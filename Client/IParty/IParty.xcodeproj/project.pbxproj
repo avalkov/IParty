@@ -44,6 +44,7 @@
 		73F4BFAE1C669834000F41FC /* Radar.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFAD1C669834000F41FC /* Radar.m */; };
 		73F4BFB21C669864000F41FC /* AngleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB11C669864000F41FC /* AngleGradientLayer.m */; };
 		73F4BFBA1C66BAB7000F41FC /* PartyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */; };
+		73F4BFBD1C67E182000F41FC /* JoinPartyResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,8 @@
 		73F4BFB11C669864000F41FC /* AngleGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleGradientLayer.m; sourceTree = "<group>"; };
 		73F4BFB81C66BAB7000F41FC /* PartyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyDetailsViewController.h; sourceTree = "<group>"; };
 		73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyDetailsViewController.m; sourceTree = "<group>"; };
+		73F4BFBB1C67E182000F41FC /* JoinPartyResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinPartyResponseModel.h; sourceTree = "<group>"; };
+		73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinPartyResponseModel.m; sourceTree = "<group>"; };
 		8B7178E1F40AEF11891FC094 /* libPods-IParty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IParty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF72CF0F7D4AC69E4D690A4 /* Pods-IParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IParty/Pods-IParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +144,8 @@
 				73321E991C661A38008A0B5C /* PartyResponseModel.m */,
 				73F4BFA21C667058000F41FC /* FindPartyRequestModel.h */,
 				73F4BFA31C667058000F41FC /* FindPartyRequestModel.m */,
+				73F4BFBB1C67E182000F41FC /* JoinPartyResponseModel.h */,
+				73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				73321E941C650D82008A0B5C /* HttpHelper.m in Sources */,
 				736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */,
 				736490AF1C628241009E5FFA /* MessageBox.m in Sources */,
+				73F4BFBD1C67E182000F41FC /* JoinPartyResponseModel.m in Sources */,
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
 				73F4BFA71C668133000F41FC /* AsyncTasksHelper.m in Sources */,
 				737F7DFD1C60DB5C008DDB41 /* main.m in Sources */,

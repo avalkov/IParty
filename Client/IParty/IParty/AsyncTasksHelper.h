@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+#import "NearbyPartyTableViewCell.h"
+
 @interface AsyncTasksHelper : NSObject
 
++(void)loadImageAsyncAtTableCell:(NearbyPartyTableViewCell *) imageView fromUrl:(NSString *) url;
 +(void)loadImageAsyncAtUIImageView:(UIImageView *) imageView fromUrl:(NSString *) url;
 
 @end

@@ -51,6 +51,26 @@ import Foundation
         
         executeRequestAsync(request, completion: completion);
     }
+    
+    func getData(atUrl url: String, withCustomHeaders customHeaders: [String: String]?, completion: (NSData?, NSNumber?) -> ()) {
+        
+        let request = createRequest(withUrl: url, andCustomHeaders: customHeaders);
+        
+        request.HTTPMethod = "GET";
+        
+        let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+            guard error == nil && data != nil else { // check for networking error
+                completion(nil, nil);
+                return
+            }
+            
+            let httpStatus = response as? NSHTTPURLResponse;
+
+            completion(data, httpStatus!.statusCode);
+        }
+        task.resume()
+    }
+
 
     func createRequest(withUrl url: String, andCustomHeaders customHeaders: [String: String]?) -> NSMutableURLRequest {
         

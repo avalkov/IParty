@@ -19,6 +19,7 @@ extern NSString *const CREATE_PARTY_URI;
 extern NSString *const UPLOAD_IMAGE_URI;
 extern NSString *const GET_USER_PARTIES_URI;
 extern NSString *const FIND_NEARBY_PARTIES_URI;
+extern NSString *const JOIN_PARTY_URI;
 
 extern NSString *const MIME_TYPE_BOUNDARY;
 

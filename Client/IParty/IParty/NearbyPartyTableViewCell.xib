@@ -24,7 +24,13 @@
                         <rect key="frame" x="8" y="8" width="87" height="61"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0K-ov-4av">
-                        <rect key="frame" x="103" y="44" width="209" height="25"/>
+                        <rect key="frame" x="103" y="44" width="104" height="25"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d6-6j-Pf3">
+                        <rect key="frame" x="215" y="44" width="97" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -33,9 +39,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="distanceLabel" destination="c0K-ov-4av" id="vW1-Uo-OHk"/>
                 <outlet property="image" destination="sz1-bd-IXp" id="UiI-3w-wxX"/>
+                <outlet property="startTimeLabel" destination="7d6-6j-Pf3" id="JPh-gC-PgS"/>
                 <outlet property="title" destination="bb0-RA-5G6" id="a1c-8D-hak"/>
-                <outlet property="underTitle" destination="c0K-ov-4av" id="E2U-AF-KU9"/>
             </connections>
             <point key="canvasLocation" x="258" y="434"/>
         </tableViewCell>
