@@ -68,6 +68,16 @@
     
     id completion = ^(NSString *response, NSNumber *statusCode) {
         
+        if(response == nil && statusCode == nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __weak typeof(self) weakSelf = self;
+                [MessageBox showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
+            });
+            
+            return;
+        }
+        
         NSData *responseData = [response dataUsingEncoding:NSUTF8StringEncoding];
         NSMutableArray *jsonArr = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
         self.parties = [PartyResponseModel arrayOfModelsFromDictionaries:jsonArr error:nil];

@@ -19,5 +19,7 @@ NSString *const UPLOAD_IMAGE_URI = @"api/images";
 NSString *const GET_USER_PARTIES_URI = @"api/party";
 NSString *const FIND_NEARBY_PARTIES_URI = @"api/party/search";
 
+NSString *const MIME_TYPE_BOUNDARY = @"ipartyyoupartywepartytheyparty";
+
 int const HTTP_STATUS_OK = 200;
 int const HTTP_STATUS_CREATED = 201;

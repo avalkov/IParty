@@ -53,7 +53,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 __weak typeof(self) weakSelf = self;
                 [MessageBox showAlertWithTitle:@"Success" viewController:weakSelf andMessage:@"Successfully registered"];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
             });
             
         } else {

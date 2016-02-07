@@ -16,7 +16,7 @@
                                                        @"Title":@"title",
                                                        @"Description": @"pDescription",
                                                        @"Distance":@"distance",
-                                                       @"ImageUrl":@"frontImageUrl"
+                                                       @"ImagesUrls":@"imagesUrls"
                                                        }];
 }
 

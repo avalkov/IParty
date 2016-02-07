@@ -394,6 +394,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2e8-pm-d6C">
                                 <rect key="frame" x="20" y="72" width="560" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -407,11 +408,69 @@
                     <navigationItem key="navigationItem" title="Find Party" id="6Bq-a8-aIc"/>
                     <connections>
                         <outlet property="tableView" destination="2e8-pm-d6C" id="IbC-TF-XTU"/>
+                        <segue destination="X7u-FA-E5S" kind="show" id="Qaw-N1-XRS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNC-rs-LE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2820" y="820"/>
+        </scene>
+        <!--Party Details View Controller-->
+        <scene sceneID="bVT-f6-s3Y">
+            <objects>
+                <viewController id="X7u-FA-E5S" customClass="PartyDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RP1-zF-yjF"/>
+                        <viewControllerLayoutGuide type="bottom" id="RJc-mZ-Y4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="14D-U6-LaC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jro-Qh-71j">
+                                <rect key="frame" x="20" y="72" width="560" height="355"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SwS-TZ-E77">
+                                <rect key="frame" x="20" y="435" width="560" height="145"/>
+                                <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="145" id="77m-sw-eyY"/>
+                                </constraints>
+                                <mutableString key="text">2016-02-06 15:33:28.694 IParty[2047:86986] (
+    "&lt;PartyResponseModel&gt; \n   [pId]: 1\n   [imagesUrls]: (\n           {\n           Id = 1;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUds5mj66dldqITuvOzZrvtAKhIyW0g2oMtMjeY_Wyod6zJRvWQ\";\n       },\n           {\n           Id = 2;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUds5mj66dldqITuvOzZrvtAKhIyW0g2oMtMjeY_Wyod6zJRvWQ\";\n       },\n           {\n           Id = 3;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUds5mj66dldqITuvOzZrvtAKhIyW0g2oMtMjeY_Wyod6zJRvWQ\";\n       },\n           {\n           Id = 4;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUds5mj66dldqITuvOzZrvtAKhIyW0g2oMtMjeY_Wyod6zJRvWQ\";\n       },\n           {\n           Id = 5;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCUds5mj66dldqITuvOzZrvtAKhIyW0g2oMtMjeY_Wyod6zJRvWQ\";\n       },\n           {\n           Id = 6;\n           Url = \"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5leJkXfx8OOo1SOEjXb1mFrjr9lm4kMC8Ow0LgGO-QVrLnBvLjw\";\n       }\n   )\n   [title]: Hell aaaaao\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 2\n   [imagesUrls]: (\n   )\n   [title]: Hell aaaaao\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 3\n   [imagesUrls]: (\n   )\n   [title]: One more party\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 4\n   [imagesUrls]: (\n   )\n   [title]: One more party\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 5\n   [imagesUrls]: (\n   )\n   [title]: One more party 1\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 6\n   [imagesUrls]: (\n   )\n   [title]: One more party 1\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 7\n   [imagesUrls]: (\n   )\n   [title]: One more party 2\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;",
+    "&lt;PartyResponseModel&gt; \n   [pId]: 8\n   [imagesUrls]: (\n   )\n   [title]: One more party 2\n   [pDescription]: Dataaaaaa aaaaaaa  aaaaaaaaaaaaaaaaaaaaaaaa aaaaaaa aaaaaaa...\n   [distance]: 6399.05\n&lt;/PartyResponseModel&gt;"
+)</mutableString>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jro-Qh-71j" firstAttribute="leading" secondItem="SwS-TZ-E77" secondAttribute="leading" id="1eR-Br-f2w"/>
+                            <constraint firstItem="jro-Qh-71j" firstAttribute="trailing" secondItem="14D-U6-LaC" secondAttribute="trailingMargin" id="4Mg-cT-P6C"/>
+                            <constraint firstItem="SwS-TZ-E77" firstAttribute="top" secondItem="jro-Qh-71j" secondAttribute="bottom" constant="8" symbolic="YES" id="NMX-5Q-ZHB"/>
+                            <constraint firstItem="jro-Qh-71j" firstAttribute="leading" secondItem="14D-U6-LaC" secondAttribute="leadingMargin" id="QUY-SI-NST"/>
+                            <constraint firstItem="jro-Qh-71j" firstAttribute="top" secondItem="RP1-zF-yjF" secondAttribute="bottom" constant="8" symbolic="YES" id="XY6-Wa-OPt"/>
+                            <constraint firstAttribute="bottom" secondItem="SwS-TZ-E77" secondAttribute="bottom" constant="20" symbolic="YES" id="hgk-ms-1dg"/>
+                            <constraint firstItem="jro-Qh-71j" firstAttribute="trailing" secondItem="SwS-TZ-E77" secondAttribute="trailing" id="qfr-Sf-aOe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vth-Vl-nzC"/>
+                    <connections>
+                        <outlet property="image" destination="jro-Qh-71j" id="2Iw-vE-gs4"/>
+                        <outlet property="navigation" destination="vth-Vl-nzC" id="lUt-pt-n49"/>
+                        <outlet property="partyDescription" destination="SwS-TZ-E77" id="M9M-qP-6ir"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C4b-zk-fxW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3551" y="820"/>
         </scene>
         <!--History-->
         <scene sceneID="qmr-R1-nU4">

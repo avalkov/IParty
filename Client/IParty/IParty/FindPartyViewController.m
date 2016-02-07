@@ -16,6 +16,8 @@
 #import "PartyResponseModel.h"
 #import "NearbyPartyTableViewCell.h"
 #import "AsyncTasksHelper.h"
+#import "Radar.h"
+#import "RadarArcs.h"
 
 #import "IParty-Swift.h"
 
@@ -33,6 +35,8 @@
 @implementation FindPartyViewController
 
 CLLocationManager *locationManager;
+RadarArcs *arcsView;
+Radar *radarView;
 
 - (void)viewDidLoad {
 
@@ -45,6 +49,17 @@ CLLocationManager *locationManager;
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    self.tableView.alpha = 0;
+    
+    arcsView = [[RadarArcs alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 140, self.view.frame.size.height / 2 - 140, 280, 280)];
+    arcsView.layer.contentsScale = [UIScreen mainScreen].scale;
+    [self.view addSubview:arcsView];
+    radarView = [[Radar alloc] initWithFrame:CGRectMake(3, 3, self.view.frame.size.width-6, self.view.frame.size.height-6)];
+    radarView.layer.contentsScale = [UIScreen mainScreen].scale;
+    radarView.alpha = 0.68;
+    [self.view addSubview:radarView];
+    [self spinRadar];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -76,9 +91,30 @@ CLLocationManager *locationManager;
     return _parties;
 }
 
+-(void)spinRadar {
+
+    CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+    spin.duration = 1;
+    spin.toValue = [NSNumber numberWithFloat:-M_PI];
+    spin.cumulative = YES;
+    spin.removedOnCompletion = NO;
+    spin.repeatCount = MAXFLOAT;
+    [radarView.layer addAnimation:spin forKey:@"spinRadarView"];
+}
+
 -(void)findNearbyParties {
     
     id completion = ^(NSString *response, NSNumber *statusCode) {
+        
+        if(response == nil && statusCode == nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __weak typeof(self) weakSelf = self;
+                [MessageBox showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
+            });
+            
+            return;
+        }
         
         NSData *responseData = [response dataUsingEncoding:NSUTF8StringEncoding];
         NSMutableArray *jsonArr = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
@@ -87,9 +123,33 @@ CLLocationManager *locationManager;
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if([self.parties count] == 0) {
+                
                 [MessageBox showAlertWithTitle:@"Too bad" viewController:self andMessage:@"No parties around you :("];
+                
             } else {
+                
+                NSLog(@"%@", self.parties);
                 [self.tableView reloadData];
+                
+                [UIView animateWithDuration:1 animations:^{
+                    radarView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    if(finished == YES) {
+                        [radarView removeFromSuperview];
+                    }
+                }];
+                
+                [UIView animateWithDuration:1 animations:^{
+                    arcsView.alpha = 0;
+                } completion:^(BOOL finished) {
+                    if(finished == YES) {
+                        [arcsView removeFromSuperview];
+                    }
+                }];
+                
+                [UIView animateWithDuration:1 animations:^{
+                                     self.tableView.alpha = 1;
+                                 }];
             }
         });
     };
@@ -155,8 +215,8 @@ CLLocationManager *locationManager;
     cell.title.text = party.title;
     cell.underTitle.text = [NSString stringWithFormat:@"%@ km away", party.distance];
     
-    if(party.frontImageUrl != nil && [party.frontImageUrl length] > 0) {
-        [AsyncTasksHelper loadImageAsyncAtUIImageView:cell.image fromUrl:party.frontImageUrl];
+    if(party.imagesUrls != nil && [party.imagesUrls count] > 0) {
+        [AsyncTasksHelper loadImageAsyncAtUIImageView:cell.image fromUrl:[party.imagesUrls[0] objectForKey:@"Url"]];
     }
     
     return cell;

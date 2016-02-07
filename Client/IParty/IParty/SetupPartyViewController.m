@@ -15,7 +15,9 @@
 #import "CreatePartyRequestModel.h"
 #import "ReverseGeoLocation.h"
 #import "HttpHelper.h"
+#import "PartyResponseModel.h"
 
+#import "UIView+Toast.h"
 #import "JSONModel.h"
 
 #import "IParty-Swift.h"
@@ -34,6 +36,9 @@
 @property (strong, nonatomic) NSNumber *latitude;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+@property (nonatomic) int imagesForUploadCount;
+@property (atomic) int imagesUploadedCount;
 
 @end
 
@@ -167,43 +172,6 @@ NSMutableArray *imagesForUploadData;
     self.locationInput.text = self.locationAddress;
 }
 
-- (IBAction)submitAction:(id)sender {
-    
-    if([self validateFields] == NO) {
-        return;
-    }
-    
-    id completion = ^(NSString *response, NSNumber *statusCode) {
-
-        NSLog(@"%@", response);
-        NSLog(@"%@", statusCode);
-    };
-    
-    NSString *serverUrl = [NSString stringWithFormat:@"%@%@", SERVER_URL, CREATE_PARTY_URI];
-    
-    CreatePartyRequestModel *createPartyRequestModel = [[CreatePartyRequestModel alloc] initWithTitle:self.titleInput.text description:self.descriptionInput.text locationAddress:self.locationAddress longitude:self.longitude latitude:self.latitude startTime:self.startTime];
-    
-    NSDictionary *customHeaders = @{
-                                    @"Content-Type": @"application/json",
-                                    @"Authorization": [NSString stringWithFormat:@"%@%@", @"Bearer ", self.token]
-                                    };
-    
-    HttpRequester *httpRequester = [[HttpRequester alloc] init];
-    [httpRequester postAtUrl:serverUrl withFormDataData:[createPartyRequestModel toJSONString] andCustomHeaders:customHeaders completion:completion];
-    
-    httpRequester = [[HttpRequester alloc] init];
-    
-    NSString *boundary = [HttpHelper generateBoundary];
-    serverUrl = [NSString stringWithFormat:@"%@%@/1", SERVER_URL, UPLOAD_IMAGE_URI];
-    [customHeaders setValue:[NSString stringWithFormat:@"%@%@", @"multipart/form-data; boundary=", boundary] forKey:@"Content-Type"];
-    
-    NSData *data = UIImageJPEGRepresentation([imagesForUploadData objectAtIndex:0], 0.1f);
-
-    [httpRequester uploadFileAtUrl:serverUrl withFileData:data boundary:boundary mimetype:[HttpHelper getMimeTypeOfImage:data] andCustomHeaders:customHeaders completion:completion];
-    
-    //[self.navigationController popToRootViewControllerAnimated:YES];
-}
-
 - (BOOL)validateFields {
     
     if(self.titleInput.text.length == 0) {
@@ -231,6 +199,90 @@ NSMutableArray *imagesForUploadData;
     }
     
     return YES;
+}
+
+- (IBAction)submitAction:(id)sender {
+    
+    if([self validateFields] == NO) {
+        return;
+    }
+    
+    [self.view makeToast:@"Please hold while processing your party..."];
+    [self.view makeToastActivity:CSToastPositionCenter];
+    
+    id completion = ^(NSString *response, NSNumber *statusCode) {
+
+        if(response == nil && statusCode == nil) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __weak typeof(self) weakSelf = self;
+                [MessageBox showAlertWithTitle:@"No Internet" viewController:weakSelf andMessage:@"Please check your internet connection and try again"];
+            });
+            
+            return;
+            
+        } else if([statusCode intValue] == HTTP_STATUS_CREATED) {
+            
+            if([imagesForUploadData count] > 0) {
+                PartyResponseModel *partyResponseModel = [[PartyResponseModel alloc] initWithString:response error:nil];
+                [self uploadImages: partyResponseModel];
+            }
+            
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __weak typeof(self) weakSelf = self;
+                [MessageBox showAlertWithTitle:@"Error" viewController:weakSelf andMessage:@"You tried to setup party with invalid data"];
+            });
+        }
+    };
+    
+    NSString *serverUrl = [NSString stringWithFormat:@"%@%@", SERVER_URL, CREATE_PARTY_URI];
+    
+    CreatePartyRequestModel *createPartyRequestModel = [[CreatePartyRequestModel alloc] initWithTitle:self.titleInput.text description:self.descriptionInput.text locationAddress:self.locationAddress longitude:self.longitude latitude:self.latitude startTime:self.startTime];
+    
+    NSDictionary *customHeaders = @{
+                                    @"Content-Type": @"application/json",
+                                    @"Authorization": [NSString stringWithFormat:@"%@%@", @"Bearer ", self.token]
+                                    };
+    
+    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+    [httpRequester postAtUrl:serverUrl withFormDataData:[createPartyRequestModel toJSONString] andCustomHeaders:customHeaders completion:completion];
+}
+
+- (void)uploadImages: (PartyResponseModel *)partyResponseModel  {
+    
+    id completion = ^(NSString *response, NSNumber *statusCode) {
+        
+        self.imagesUploadedCount += 1;
+        
+        if(self.imagesUploadedCount == self.imagesForUploadCount) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            });
+        }
+    };
+    
+    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+    
+    NSString *serverUrl = [NSString stringWithFormat:@"%@%@/%@", SERVER_URL, UPLOAD_IMAGE_URI, partyResponseModel.pId];
+    
+    NSDictionary *customHeaders = @{
+                                    @"Authorization": [NSString stringWithFormat:@"%@%@", @"Bearer ", self.token],
+                                    @"Content-Type": [NSString stringWithFormat:@"%@%@", @"multipart/form-data; boundary=", MIME_TYPE_BOUNDARY]
+                                    };
+    
+    self.imagesForUploadCount = (int) [imagesForUploadData count];
+    self.imagesUploadedCount = 0;
+    
+    for(int i = 0; i < self.imagesForUploadCount; i++) {
+        
+        NSData *data = UIImageJPEGRepresentation([imagesForUploadData objectAtIndex:i], 0.1f);
+    
+        [httpRequester uploadFileAtUrl:serverUrl withFileData:data boundary:MIME_TYPE_BOUNDARY mimetype:[HttpHelper getMimeTypeOfImage:data] andCustomHeaders:customHeaders completion:completion];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

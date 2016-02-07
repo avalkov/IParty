@@ -40,6 +40,10 @@
 		737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 737F7E2B1C616C95008DDB41 /* RegisterViewController.m */; };
 		73F4BFA41C667058000F41FC /* FindPartyRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFA31C667058000F41FC /* FindPartyRequestModel.m */; };
 		73F4BFA71C668133000F41FC /* AsyncTasksHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFA61C668133000F41FC /* AsyncTasksHelper.m */; };
+		73F4BFAB1C669814000F41FC /* RadarArcs.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFAA1C669814000F41FC /* RadarArcs.m */; };
+		73F4BFAE1C669834000F41FC /* Radar.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFAD1C669834000F41FC /* Radar.m */; };
+		73F4BFB21C669864000F41FC /* AngleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB11C669864000F41FC /* AngleGradientLayer.m */; };
+		73F4BFBA1C66BAB7000F41FC /* PartyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +104,14 @@
 		73F4BFA31C667058000F41FC /* FindPartyRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPartyRequestModel.m; sourceTree = "<group>"; };
 		73F4BFA51C668133000F41FC /* AsyncTasksHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncTasksHelper.h; sourceTree = "<group>"; };
 		73F4BFA61C668133000F41FC /* AsyncTasksHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncTasksHelper.m; sourceTree = "<group>"; };
+		73F4BFA91C669814000F41FC /* RadarArcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarArcs.h; sourceTree = "<group>"; };
+		73F4BFAA1C669814000F41FC /* RadarArcs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarArcs.m; sourceTree = "<group>"; };
+		73F4BFAC1C669834000F41FC /* Radar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Radar.h; sourceTree = "<group>"; };
+		73F4BFAD1C669834000F41FC /* Radar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Radar.m; sourceTree = "<group>"; };
+		73F4BFB01C669864000F41FC /* AngleGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleGradientLayer.h; sourceTree = "<group>"; };
+		73F4BFB11C669864000F41FC /* AngleGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleGradientLayer.m; sourceTree = "<group>"; };
+		73F4BFB81C66BAB7000F41FC /* PartyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PartyDetailsViewController.h; sourceTree = "<group>"; };
+		73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyDetailsViewController.m; sourceTree = "<group>"; };
 		8B7178E1F40AEF11891FC094 /* libPods-IParty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IParty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF72CF0F7D4AC69E4D690A4 /* Pods-IParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IParty/Pods-IParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +199,7 @@
 		737F7DFA1C60DB5C008DDB41 /* IParty */ = {
 			isa = PBXGroup;
 			children = (
+				73F4BFA81C6697F8000F41FC /* Animations */,
 				73321E871C64C6C9008A0B5C /* Models */,
 				736490B71C638EB7009E5FFA /* DB */,
 				736490AA1C6281CF009E5FFA /* Helpers */,
@@ -232,6 +245,8 @@
 				736490C11C641B1E009E5FFA /* HistoryViewController.m */,
 				736490C31C641C92009E5FFA /* FindPartyViewController.h */,
 				736490C41C641C92009E5FFA /* FindPartyViewController.m */,
+				73F4BFB81C66BAB7000F41FC /* PartyDetailsViewController.h */,
+				73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -259,6 +274,27 @@
 				737F7E241C61448C008DDB41 /* IParty-Bridging-Header.h */,
 			);
 			name = HTTP;
+			sourceTree = "<group>";
+		};
+		73F4BFA81C6697F8000F41FC /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				73F4BFAF1C66984D000F41FC /* AngleGradient */,
+				73F4BFAC1C669834000F41FC /* Radar.h */,
+				73F4BFAD1C669834000F41FC /* Radar.m */,
+				73F4BFA91C669814000F41FC /* RadarArcs.h */,
+				73F4BFAA1C669814000F41FC /* RadarArcs.m */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
+		73F4BFAF1C66984D000F41FC /* AngleGradient */ = {
+			isa = PBXGroup;
+			children = (
+				73F4BFB01C669864000F41FC /* AngleGradientLayer.h */,
+				73F4BFB11C669864000F41FC /* AngleGradientLayer.m */,
+			);
+			name = AngleGradient;
 			sourceTree = "<group>";
 		};
 		80CC24597639270608FD0018 /* Pods */ = {
@@ -421,12 +457,16 @@
 				736490BA1C638F00009E5FFA /* DBManager.m in Sources */,
 				737F7E031C60DB5C008DDB41 /* MainMenuViewController.m in Sources */,
 				736490C51C641C92009E5FFA /* FindPartyViewController.m in Sources */,
+				73F4BFAB1C669814000F41FC /* RadarArcs.m in Sources */,
+				73F4BFAE1C669834000F41FC /* Radar.m in Sources */,
 				73F4BFA41C667058000F41FC /* FindPartyRequestModel.m in Sources */,
 				736490C21C641B1E009E5FFA /* HistoryViewController.m in Sources */,
 				73321E901C64E86D008A0B5C /* ReverseGeoLocation.m in Sources */,
 				737F7E001C60DB5C008DDB41 /* AppDelegate.m in Sources */,
 				737F7E2C1C616C95008DDB41 /* RegisterViewController.m in Sources */,
+				73F4BFBA1C66BAB7000F41FC /* PartyDetailsViewController.m in Sources */,
 				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
+				73F4BFB21C669864000F41FC /* AngleGradientLayer.m in Sources */,
 				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
 				73321E941C650D82008A0B5C /* HttpHelper.m in Sources */,
 				736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */,

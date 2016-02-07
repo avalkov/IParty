@@ -29,14 +29,15 @@ import Foundation
         
         let filePathKey = "unknown";
         let filename = "unknown";
+        let myBounday = "ipartyyoupartywepartytheyparty";
         
         let body = NSMutableData()
-        body.appendData("--\(boundary)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData("--\(myBounday)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData("Content-Disposition: form-data; name=\"\(filePathKey)\"; filename=\"\(filename)\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData("Content-Type: \(mimetype)\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         body.appendData(data!)
         body.appendData("\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
-        body.appendData("--\(boundary)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
+        body.appendData("--\(myBounday)--\r\n".dataUsingEncoding(NSUTF8StringEncoding)!)
         request.HTTPBody = body;
         
         executeRequestAsync(request, completion: completion);
