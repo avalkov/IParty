@@ -19,5 +19,6 @@
 @property (nonatomic, strong) NSMutableArray *imagesUrls;
 @property (nonatomic, strong) NSString *startTime;
 @property (nonatomic, strong) NSNumber *membersCount;
+@property (nonatomic, strong) NSString *locationAddress;
 
 @end

@@ -47,11 +47,19 @@
     self.loginButton.hidden = YES;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    self.usernameInput.text = @"";
+    self.passwordInput.text = @"";
+}
+
 -(void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-
-    self.token = nil;//[self loadTokenFromDb];
+    
+    self.token = [self loadTokenFromDb];
     
     if(self.token != nil) {
         

@@ -20,7 +20,6 @@
 		736490B11C6293E4009E5FFA /* AppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B01C6293E4009E5FFA /* AppConstants.m */; };
 		736490B51C638E5B009E5FFA /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 736490B41C638E5B009E5FFA /* libsqlite3.tbd */; };
 		736490BA1C638F00009E5FFA /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490B91C638F00009E5FFA /* DBManager.m */; };
-		736490BC1C6390F5009E5FFA /* sampledb.sql in Resources */ = {isa = PBXBuildFile; fileRef = 736490BB1C6390F5009E5FFA /* sampledb.sql */; };
 		736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490BE1C640FB1009E5FFA /* SendInviteViewController.m */; };
 		736490C21C641B1E009E5FFA /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490C11C641B1E009E5FFA /* HistoryViewController.m */; };
 		736490C51C641C92009E5FFA /* FindPartyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 736490C41C641C92009E5FFA /* FindPartyViewController.m */; };
@@ -45,6 +44,11 @@
 		73F4BFB21C669864000F41FC /* AngleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB11C669864000F41FC /* AngleGradientLayer.m */; };
 		73F4BFBA1C66BAB7000F41FC /* PartyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */; };
 		73F4BFBD1C67E182000F41FC /* JoinPartyResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */; };
+		73F4BFC01C67F85A000F41FC /* HistoryLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFBF1C67F85A000F41FC /* HistoryLogger.m */; };
+		73F4BFC31C6807AF000F41FC /* sampledbv3.sql in Resources */ = {isa = PBXBuildFile; fileRef = 73F4BFC21C6807AF000F41FC /* sampledbv3.sql */; };
+		73F4BFC51C6813D6000F41FC /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73F4BFC41C6813D6000F41FC /* HistoryTableViewCell.xib */; };
+		73F4BFC81C6815A7000F41FC /* HistoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFC71C6815A7000F41FC /* HistoryTableViewCell.m */; };
+		73F4BFCB1C682718000F41FC /* ActionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F4BFCA1C682718000F41FC /* ActionModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,7 +74,6 @@
 		736490B41C638E5B009E5FFA /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		736490B81C638ECC009E5FFA /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		736490B91C638F00009E5FFA /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		736490BB1C6390F5009E5FFA /* sampledb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampledb.sql; sourceTree = "<group>"; };
 		736490BD1C640FB1009E5FFA /* SendInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendInviteViewController.h; sourceTree = "<group>"; };
 		736490BE1C640FB1009E5FFA /* SendInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendInviteViewController.m; sourceTree = "<group>"; };
 		736490C01C641B1E009E5FFA /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
@@ -115,6 +118,14 @@
 		73F4BFB91C66BAB7000F41FC /* PartyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PartyDetailsViewController.m; sourceTree = "<group>"; };
 		73F4BFBB1C67E182000F41FC /* JoinPartyResponseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinPartyResponseModel.h; sourceTree = "<group>"; };
 		73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinPartyResponseModel.m; sourceTree = "<group>"; };
+		73F4BFBE1C67F85A000F41FC /* HistoryLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryLogger.h; sourceTree = "<group>"; };
+		73F4BFBF1C67F85A000F41FC /* HistoryLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryLogger.m; sourceTree = "<group>"; };
+		73F4BFC21C6807AF000F41FC /* sampledbv3.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = sampledbv3.sql; sourceTree = "<group>"; };
+		73F4BFC41C6813D6000F41FC /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		73F4BFC61C6815A7000F41FC /* HistoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryTableViewCell.h; sourceTree = "<group>"; };
+		73F4BFC71C6815A7000F41FC /* HistoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryTableViewCell.m; sourceTree = "<group>"; };
+		73F4BFC91C682718000F41FC /* ActionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionModel.h; sourceTree = "<group>"; };
+		73F4BFCA1C682718000F41FC /* ActionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionModel.m; sourceTree = "<group>"; };
 		8B7178E1F40AEF11891FC094 /* libPods-IParty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IParty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FF72CF0F7D4AC69E4D690A4 /* Pods-IParty.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IParty.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IParty/Pods-IParty.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +157,8 @@
 				73F4BFA31C667058000F41FC /* FindPartyRequestModel.m */,
 				73F4BFBB1C67E182000F41FC /* JoinPartyResponseModel.h */,
 				73F4BFBC1C67E182000F41FC /* JoinPartyResponseModel.m */,
+				73F4BFC91C682718000F41FC /* ActionModel.h */,
+				73F4BFCA1C682718000F41FC /* ActionModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -161,6 +174,8 @@
 				73321E931C650D82008A0B5C /* HttpHelper.m */,
 				73F4BFA51C668133000F41FC /* AsyncTasksHelper.h */,
 				73F4BFA61C668133000F41FC /* AsyncTasksHelper.m */,
+				73F4BFBE1C67F85A000F41FC /* HistoryLogger.h */,
+				73F4BFBF1C67F85A000F41FC /* HistoryLogger.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -176,7 +191,7 @@
 		736490B71C638EB7009E5FFA /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				736490BB1C6390F5009E5FFA /* sampledb.sql */,
+				73F4BFC21C6807AF000F41FC /* sampledbv3.sql */,
 				736490B81C638ECC009E5FFA /* DBManager.h */,
 				736490B91C638F00009E5FFA /* DBManager.m */,
 			);
@@ -268,6 +283,9 @@
 				73321E9D1C6661D3008A0B5C /* NearbyPartyTableViewCell.xib */,
 				73321E9F1C6662F8008A0B5C /* NearbyPartyTableViewCell.h */,
 				73321EA01C6662F8008A0B5C /* NearbyPartyTableViewCell.m */,
+				73F4BFC41C6813D6000F41FC /* HistoryTableViewCell.xib */,
+				73F4BFC61C6815A7000F41FC /* HistoryTableViewCell.h */,
+				73F4BFC71C6815A7000F41FC /* HistoryTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -388,12 +406,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				736490BC1C6390F5009E5FFA /* sampledb.sql in Resources */,
+				73F4BFC31C6807AF000F41FC /* sampledbv3.sql in Resources */,
 				737F7E0B1C60DB5C008DDB41 /* LaunchScreen.storyboard in Resources */,
 				737F7E221C61195D008DDB41 /* UploadImageCollectionViewCell.xib in Resources */,
 				737F7E081C60DB5C008DDB41 /* Assets.xcassets in Resources */,
 				737F7E061C60DB5C008DDB41 /* Main.storyboard in Resources */,
 				73321E9E1C6661D3008A0B5C /* NearbyPartyTableViewCell.xib in Resources */,
+				73F4BFC51C6813D6000F41FC /* HistoryTableViewCell.xib in Resources */,
 				737F7E181C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +492,8 @@
 				737F7E211C61195D008DDB41 /* UploadImageCollectionViewCell.m in Sources */,
 				73F4BFB21C669864000F41FC /* AngleGradientLayer.m in Sources */,
 				737F7E261C61448C008DDB41 /* HttpRequester.swift in Sources */,
+				73F4BFC81C6815A7000F41FC /* HistoryTableViewCell.m in Sources */,
+				73F4BFC01C67F85A000F41FC /* HistoryLogger.m in Sources */,
 				73321E941C650D82008A0B5C /* HttpHelper.m in Sources */,
 				736490BF1C640FB1009E5FFA /* SendInviteViewController.m in Sources */,
 				736490AF1C628241009E5FFA /* MessageBox.m in Sources */,
@@ -480,6 +501,7 @@
 				737F7E171C60DC5F008DDB41 /* MainMenuItemCollectionViewCell.m in Sources */,
 				73F4BFA71C668133000F41FC /* AsyncTasksHelper.m in Sources */,
 				737F7DFD1C60DB5C008DDB41 /* main.m in Sources */,
+				73F4BFCB1C682718000F41FC /* ActionModel.m in Sources */,
 				73321E971C6602DA008A0B5C /* ContactModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

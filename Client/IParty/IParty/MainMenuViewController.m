@@ -6,15 +6,20 @@
 //  Copyright © 2016 Swifty. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "MainMenuViewController.h"
 #import "MainMenuItemCollectionViewCell.h"
 #import "SetupPartyViewController.h"
 #import "SendInviteViewController.h"
 #import "FindPartyViewController.h"
+#import "MessageBox.h"
+#import "DBManager.h"
 
 @interface MainMenuViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (weak, nonatomic) DBManager *dbManager;
 
 @end
 
@@ -25,6 +30,9 @@ static NSArray *image_array, *label_array, *segues_array;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    self.dbManager = delegate.globalDBManager;
     
     self.view.backgroundColor = [UIColor whiteColor];
     image_array = [NSArray arrayWithObjects: @"setupPartyImage.jpg", @"findPartyImage", @"sendInviteImage", @"reviewMemoriesImage", nil ];
@@ -133,6 +141,21 @@ static NSArray *image_array, *label_array, *segues_array;
     return UIEdgeInsetsMake(10, 0, 0, 0);
 }
 
+- (IBAction)logoutAction:(id)sender {
+    
+    self.token = nil;
+    
+    NSString *deleteOldTokens = [NSString stringWithFormat:@"delete from tokens"];
+    [self.dbManager executeQuery:deleteOldTokens];
+    
+    id completion = ^(UIAlertAction *action) {
+        if([[action title] isEqualToString:@"YES"] == YES) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    };
+    
+    [MessageBox showConfirmationBoxWithTitle:@"Attention" viewController:self completion:completion andMessage:@"Are you sure you wanna log out ?"];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

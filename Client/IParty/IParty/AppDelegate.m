@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.globalDBManager = [[DBManager alloc] initWithDatabaseFilename:@"sampledb.sql"];
+    self.globalDBManager = [[DBManager alloc] initWithDatabaseFilename:@"sampledbv3.sql"];
     
     return YES;
 }

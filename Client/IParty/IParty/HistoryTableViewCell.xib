@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10089" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10072.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="hmb-8Y-4Ch" customClass="HistoryTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hmb-8Y-4Ch" id="BK0-0J-bt6">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eO6-DO-pnT">
+                        <rect key="frame" x="8" y="8" width="304" height="47"/>
+                        <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5rm-jF-fbd">
+                        <rect key="frame" x="8" y="63" width="304" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="sGy-d9-45q"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5rm-jF-fbd" firstAttribute="top" secondItem="eO6-DO-pnT" secondAttribute="bottom" constant="8" symbolic="YES" id="HeF-fB-nSJ"/>
+                    <constraint firstItem="eO6-DO-pnT" firstAttribute="leading" secondItem="BK0-0J-bt6" secondAttribute="leadingMargin" id="LU5-L4-oSP"/>
+                    <constraint firstItem="eO6-DO-pnT" firstAttribute="top" secondItem="BK0-0J-bt6" secondAttribute="topMargin" id="PdO-jX-5GO"/>
+                    <constraint firstItem="eO6-DO-pnT" firstAttribute="leading" secondItem="5rm-jF-fbd" secondAttribute="leading" id="bXb-du-8UD"/>
+                    <constraint firstItem="5rm-jF-fbd" firstAttribute="bottom" secondItem="BK0-0J-bt6" secondAttribute="bottomMargin" id="l8m-9p-peO"/>
+                    <constraint firstItem="eO6-DO-pnT" firstAttribute="trailing" secondItem="BK0-0J-bt6" secondAttribute="trailingMargin" id="t8o-p5-G3U"/>
+                    <constraint firstItem="eO6-DO-pnT" firstAttribute="trailing" secondItem="5rm-jF-fbd" secondAttribute="trailing" id="yFa-zr-Ddc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.93786057690000002" green="0.93786057690000002" blue="0.93786057690000002" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="partyDescription" destination="eO6-DO-pnT" id="Vfm-kA-sH3"/>
+                <outlet property="partyTitle" destination="5rm-jF-fbd" id="8rk-1C-URD"/>
+            </connections>
+            <point key="canvasLocation" x="512" y="341"/>
+        </tableViewCell>
+    </objects>
+</document>

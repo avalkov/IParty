@@ -8,6 +8,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+#import "AppDelegate.h"
 #import "AppConstants.h"
 #import "SetupPartyViewController.h"
 #import "UploadImageCollectionViewCell.h"
@@ -16,6 +17,7 @@
 #import "ReverseGeoLocation.h"
 #import "HttpHelper.h"
 #import "PartyResponseModel.h"
+#import "HistoryLogger.h"
 
 #import "UIView+Toast.h"
 #import "JSONModel.h"
@@ -37,6 +39,8 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+@property (weak, nonatomic) DBManager *dbManager;
+
 @property (nonatomic) int imagesForUploadCount;
 @property (atomic) int imagesUploadedCount;
 
@@ -49,6 +53,9 @@ NSMutableArray *imagesForUploadData;
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    self.dbManager = delegate.globalDBManager;
     
     self.imagesForUploadCollectionView.delegate = self;
     self.imagesForUploadCollectionView.dataSource = self;
@@ -223,9 +230,19 @@ NSMutableArray *imagesForUploadData;
             
         } else if([statusCode intValue] == HTTP_STATUS_CREATED) {
             
+            [HistoryLogger logActionToHistoryAtDbManager:self.dbManager title:@"Created party" andDescription:[NSString stringWithFormat:@"%@ %@", self.titleInput.text, self.descriptionInput.text]];
+            
             if([imagesForUploadData count] > 0) {
+                
                 PartyResponseModel *partyResponseModel = [[PartyResponseModel alloc] initWithString:response error:nil];
                 [self uploadImages: partyResponseModel];
+                
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
             }
             
         } else {

@@ -6,11 +6,14 @@
 //  Copyright © 2016 Swifty. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "PartyDetailsViewController.h"
 #import "AppConstants.h"
 #import "AsyncTasksHelper.h"
 #import "JoinPartyResponseModel.h"
 #import "MessageBox.h"
+#import "HistoryLogger.h"
+
 #import "UIView+Toast.h"
 
 #import "IParty-Swift.h"
@@ -21,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *partyTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UITextView *partyDescription;
+@property (weak, nonatomic) IBOutlet UILabel *partyAddress;
+
+@property (weak, nonatomic) DBManager *dbManager;
 
 @end
 
@@ -30,7 +36,11 @@
     
     [super viewDidLoad];
     
+    AppDelegate *delegate = (AppDelegate *) [UIApplication sharedApplication].delegate;
+    self.dbManager = delegate.globalDBManager;
+    
     self.partyDescription.text = self.party.pDescription;
+    self.partyAddress.text = self.party.locationAddress;
     [self setPartyTitleWithPeopleJoinedCount: [self.party.membersCount intValue]];
     
     [self.image setUserInteractionEnabled:YES];
@@ -78,6 +88,7 @@ int currentImageIndex = 0;
 }
 
 - (void)loadPartyImageFromIndex:(int)index {
+    
     NSString *url = [[self.party.imagesUrls[currentImageIndex] objectForKey:@"Url"] stringByReplacingOccurrencesOfString:@"http://localhost/" withString:SERVER_URL];
     [AsyncTasksHelper loadImageAsyncAtUIImageView:self.image fromUrl:url];
 }
@@ -98,11 +109,15 @@ int currentImageIndex = 0;
         } else if([response length] > 0) {
             
             JoinPartyResponseModel *joinPartyResponseModel = [[JoinPartyResponseModel alloc] initWithString:response error:nil];
+            
             if(joinPartyResponseModel != nil) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self setPartyTitleWithPeopleJoinedCount: [joinPartyResponseModel.membersCount intValue]];
                     });
+
                 self.party.membersCount = [NSNumber numberWithInt:[joinPartyResponseModel.membersCount intValue]];
+                
+                [HistoryLogger logActionToHistoryAtDbManager:self.dbManager title:@"Joined party" andDescription:[NSString stringWithFormat:@"%@\r\n%@", self.partyTitle.text, self.partyDescription]];
             }
             
         } else {

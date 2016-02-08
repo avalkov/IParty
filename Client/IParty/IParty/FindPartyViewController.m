@@ -238,6 +238,10 @@ NSIndexPath *lastIndexPath;
     
     NearbyPartyTableViewCell *cell = (NearbyPartyTableViewCell *) originalCell;
     
+    if(indexPath.row + 1 > [self.parties count]) {
+        return cell;
+    }
+    
     PartyResponseModel *party = self.parties[indexPath.row];
     
     cell.title.text = party.title;

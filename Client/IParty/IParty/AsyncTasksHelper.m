@@ -13,7 +13,6 @@
 @implementation AsyncTasksHelper
 
 +(void)loadImageAsyncAtTableCell:(NearbyPartyTableViewCell *) imageView fromUrl:(NSString *) url {
-   // dispatch_async(dispatch_get_global_queue(0,0), ^{
         
     id completion = ^(NSData *response, NSNumber *statusCode) {
         
@@ -26,10 +25,8 @@
         });
     };
         
-        HttpRequester *httpRequester = [[HttpRequester alloc] init];
-        
-        [httpRequester getDataAtUrl:url withCustomHeaders:nil completion:completion];
-   // });
+    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+    [httpRequester getDataAtUrl:url withCustomHeaders:nil completion:completion];
 }
 
 

@@ -18,7 +18,8 @@
                                                        @"Distance":@"distance",
                                                        @"ImagesUrls":@"imagesUrls",
                                                        @"StartTime":@"startTime",
-                                                       @"MembersCount":@"membersCount"
+                                                       @"MembersCount":@"membersCount",
+                                                       @"LocationAddress":@"locationAddress"
                                                        }];
 }
 
