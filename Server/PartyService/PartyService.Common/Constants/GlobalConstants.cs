@@ -7,5 +7,9 @@
         public const string HTTPSRequired = "HTTPS Required";
 
         public const string ImagesStoreLocation = "~/Images/";
+
+        public const double PartiesRange = 10;
+
+        public const double PartyExpiryHours = 12;
     }
 }

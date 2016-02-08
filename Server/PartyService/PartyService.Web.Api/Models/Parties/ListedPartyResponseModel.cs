@@ -1,12 +1,13 @@
 ﻿namespace PartyService.Web.Api.Models.Parties
 {
+    using System;
     using System.Collections.Generic;
 
     using AutoMapper;
 
     using PartyService.Models;
     using PartyService.Web.Api.Infrastructure.Mappings;
-    
+
     public class ListedPartyResponseModel: IMapFrom<Party>, IHaveCustomMappings
     {
         public int Id { get; set; }
@@ -19,9 +20,13 @@
 
         public int MembersCount { get; set; }
 
+        public DateTime StartTime { get; set; }
+         
         public double Longitude { get; set; }
 
         public double Latitude { get; set; }
+
+        public string LocationAddress { get; set; }
 
         public double Distance { get; set; }
 

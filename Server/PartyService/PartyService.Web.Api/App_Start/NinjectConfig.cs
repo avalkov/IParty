@@ -15,7 +15,7 @@
     {
         public static Action<IKernel> DependenciesRegistration = kernel =>
         {
-            kernel.Bind<IPartyServiceDbContext>().To<PartyServiceDbContext>();
+            kernel.Bind<IPartyServiceDbContext>().To<PartyServiceDbContext>().InRequestScope();
             kernel.Bind(typeof(IGenericRepository<>)).To(typeof(GenericRepository<>));
         };
 

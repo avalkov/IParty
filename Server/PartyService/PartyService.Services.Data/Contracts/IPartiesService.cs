@@ -17,5 +17,7 @@
         IQueryable<Party> GetNearbyParties(double latitude, double longitude);
 
         bool AddImageToParty(int id, string userId, string imageUrl);
+
+        int? JoinParty(string userId, int partyId);
     }
 }

@@ -74,9 +74,25 @@
                 partyResult[i].Distance = Math.Round(geotool.Distance(userCoordinates, partyCoordinates), 2);
             }
 
-            Thread.Sleep(5000);
-
             return this.Ok<List<ListedPartyResponseModel>>(partyResult);
+        }
+
+        [Route("api/party/join/{partyId}")]
+        [HttpGet]
+        public IHttpActionResult JoinParty(int partyId)
+        {
+            var userId = this.User.Identity.GetUserId();
+
+            var membersCount = this.partyService.JoinParty(userId, partyId);
+            if (membersCount == null)
+            {
+                return this.BadRequest();
+            }
+
+            PartyMembersCountResponseModel partyMembersCountResponseModel = new PartyMembersCountResponseModel();
+            partyMembersCountResponseModel.MembersCount = (int)membersCount;
+
+            return this.Ok<PartyMembersCountResponseModel>(partyMembersCountResponseModel);
         }
     }
 }

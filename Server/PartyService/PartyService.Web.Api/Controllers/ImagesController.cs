@@ -5,11 +5,12 @@
     using System.Web.Hosting;
     using System.Web.Http;
     using System.Threading.Tasks;
+    using System.Threading;
     using Microsoft.AspNet.Identity;
 
     using Services.Data.Contracts;
     using Common.Constants;
-
+    
     [Authorize]
     public class ImagesController : ApiController
     {

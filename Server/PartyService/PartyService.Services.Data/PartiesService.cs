@@ -7,7 +7,8 @@
     using Contracts;
     using Models;
     using PartyService.Data.Repositories;
-
+    using PartyService.Common.Constants;
+    using PartyService.Data;
     public class PartiesService : IPartiesService
     {
         private IGenericRepository<Party> parties;
@@ -68,8 +69,8 @@
 
             this.parties.Add(party);
             party.Members.Add(user);
-
             user.Parties.Add(party);
+
             this.users.SaveChanges();
 
             return party;
@@ -94,13 +95,41 @@
         {
             // Haversine formula : https://en.wikipedia.org/wiki/Haversine_formula
 
-            var result = this.parties.All().Select(x => 12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
-                                                SqlFunctions.Cos((SqlFunctions.Pi() / 180) * latitude) * SqlFunctions.Cos((SqlFunctions.Pi() / 180) * (x.Latitude)) *
-                                                SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2)))).ToList();
+            DateTime hoursDelta = DateTime.Now.AddHours(-12);
 
-            return this.parties.All().OrderBy(x => 12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
+            return this.parties.All().Where(x => x.StartTime >= hoursDelta && (12742 * SqlFunctions.Asin(SqlFunctions.SquareRoot(SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Latitude - latitude)) / 2) +
                                                 SqlFunctions.Cos((SqlFunctions.Pi() / 180) * latitude) * SqlFunctions.Cos((SqlFunctions.Pi() / 180) * (x.Latitude)) *
-                                                SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2))));
+                                                SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2) * SqlFunctions.Sin(((SqlFunctions.Pi() / 180) * (x.Longitude - longitude)) / 2)))) <= GlobalConstants.PartiesRange);
+        }
+
+        public int? JoinParty(string userId, int partyId)
+        {
+            var party = this.parties
+                .All()
+                .Where(p => p.Id == partyId)
+                .FirstOrDefault();
+
+            if(party == null)
+            {
+                return null;
+            }
+
+            var user = this.users
+                .All()
+                .Where(u => u.Id == userId)
+                .FirstOrDefault();
+
+            if(party.Members.Contains(user))
+            {
+                return null;
+            }
+
+            user.Parties.Add(party);
+            party.Members.Add(user);
+            this.parties.SaveChanges();
+            this.users.SaveChanges();
+
+            return party.Members.Count;
         }
     }
 }
