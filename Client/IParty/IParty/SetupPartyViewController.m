@@ -281,8 +281,7 @@ NSMutableArray *imagesForUploadData;
             });
         }
     };
-    
-    HttpRequester *httpRequester = [[HttpRequester alloc] init];
+
     
     NSString *serverUrl = [NSString stringWithFormat:@"%@%@/%@", SERVER_URL, UPLOAD_IMAGE_URI, partyResponseModel.pId];
     
@@ -295,6 +294,8 @@ NSMutableArray *imagesForUploadData;
     self.imagesUploadedCount = 0;
     
     for(int i = 0; i < self.imagesForUploadCount; i++) {
+
+        HttpRequester *httpRequester = [[HttpRequester alloc] init];
         
         NSData *data = UIImageJPEGRepresentation([imagesForUploadData objectAtIndex:i], 0.1f);
     

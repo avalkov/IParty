@@ -76,7 +76,7 @@ import Foundation
         
         let request = NSMutableURLRequest(URL: NSURL(string: url)!);
         
-        request.setValue("localhost", forHTTPHeaderField: "Host");
+        //request.setValue("localhost", forHTTPHeaderField: "Host");
         
         if(customHeaders != nil) {
             for (headerName, headerValue) in customHeaders! {

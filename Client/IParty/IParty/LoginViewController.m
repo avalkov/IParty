@@ -94,9 +94,10 @@
         
         NSString *data = [NSString stringWithFormat:@"Username=%@&Password=%@&grant_type=password", username, password];
         NSString *url = [NSString stringWithFormat:@"%@%@", SERVER_URL, LOGIN_URI];
-        
+    
         id loginCompletionBlock = ^(NSString *response, NSNumber *statusCode) {
-            
+    
+            NSLog(@"%@", response);
             if(response == nil && statusCode == nil) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{

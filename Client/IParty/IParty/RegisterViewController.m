@@ -41,6 +41,7 @@
     
     id registrationCompleteionBlock = ^(NSString *response, NSNumber *statusCode) {
         
+        NSLog(@"%@", response);
         if(response == nil && statusCode == nil) {
             
             dispatch_async(dispatch_get_main_queue(), ^{

@@ -141,6 +141,7 @@ NSIndexPath *lastIndexPath;
             return;
         }
         
+        NSLog(@"%@", response);
         NSData *responseData = [response dataUsingEncoding:NSUTF8StringEncoding];
         NSMutableArray *jsonArr = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:nil];
         self.parties = [PartyResponseModel arrayOfModelsFromDictionaries:jsonArr error:nil];

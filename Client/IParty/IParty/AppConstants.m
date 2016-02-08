@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "AppConstants.h"
-
-NSString *const SERVER_URL = @"http://192.168.168.1:59651/";
+NSString *const SERVER_URL = @"http://78.90.30.20:59651/";
+// NSString *const SERVER_URL = @"http://192.168.168.1:59651/";
 
 NSString *const REGISTRATION_URI = @"api/account/register";
 NSString *const LOGIN_URI = @"token";
